@@ -23,7 +23,6 @@
 
 const REPO = 'm121i/intel121-newswire';
 const WORKFLOW = 'poll.yml';        // the newswire
-const BRIEF_WORKFLOW = 'brief.yml';  // the three-times-daily briefing
 const EVERY_MINUTES = 15;
 
 /**
@@ -94,13 +93,10 @@ function dispatch_(workflow) {
   console.log(workflow + ' dispatched 204');
 }
 
-function briefMorning() { dispatch_(BRIEF_WORKFLOW); }
-function briefMidday()  { dispatch_(BRIEF_WORKFLOW); }
-function briefEvening() { dispatch_(BRIEF_WORKFLOW); }
 
-/** Run this once. Installs every trigger and pings the newswire immediately. */
+/** Run this once. Installs the 15-minute trigger and pings the newswire immediately. */
 function setup() {
-  const handlers = ['pingNewswire', 'briefMorning', 'briefMidday', 'briefEvening'];
+  const handlers = ['pingNewswire'];
   ScriptApp.getProjectTriggers().forEach(function (t) {
     if (handlers.indexOf(t.getHandlerFunction()) !== -1) {
       ScriptApp.deleteTrigger(t);   // idempotent: re-running setup never stacks triggers
@@ -109,12 +105,6 @@ function setup() {
 
   ScriptApp.newTrigger('pingNewswire').timeBased().everyMinutes(EVERY_MINUTES).create();
 
-  // 6am, midday, 6pm Eastern. Apps Script fires a daily trigger within the hour it is
-  // given, not on the minute — fine for a briefing, and the reason the newswire uses a
-  // minute-interval trigger instead.
-  ScriptApp.newTrigger('briefMorning').timeBased().atHour(6).everyDays(1).create();
-  ScriptApp.newTrigger('briefMidday').timeBased().atHour(12).everyDays(1).create();
-  ScriptApp.newTrigger('briefEvening').timeBased().atHour(18).everyDays(1).create();
 
   console.log('Triggers installed: newswire every ' + EVERY_MINUTES +
               ' minutes; briefings at 6am, 12pm and 6pm Eastern.');
