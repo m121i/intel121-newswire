@@ -583,3 +583,184 @@ sources:
     method: gnews_entity
     query: "(\"Abraham Accords\" OR normalization Israel Saudi OR \"Saudi-Israel\")"
     threshold: 3
+
+  # ══ Added 2026-09-11 at the owner's request ═══════════════════════════════════
+  # (The National, The Free Press, The Economist, Politico US/EU, Intelligence Online,
+  #  Puck, Reuters, AP and Bloomberg were already above.)
+
+  - key: newlines
+    outlet: New Lines
+    method: rss
+    url: "https://newlinesmag.com/feed/"
+    threshold: 4
+
+  # Native feed served items 16 days stale when the kit audited it; Google News instead.
+  - key: arabnews
+    outlet: Arab News
+    method: gnews
+    url: arabnews.com
+    publisher: [Arab News, arabnews.com]
+    threshold: 4
+
+  - key: japantimes
+    outlet: Japan Times
+    method: rss
+    url: "https://www.japantimes.co.jp/feed/"
+    threshold: 5
+
+  - key: sfstandard
+    outlet: SF Standard
+    method: rss
+    url: "https://sfstandard.com/feed/"
+    threshold: 5
+
+  - key: thebanner
+    outlet: Baltimore Banner
+    method: gnews
+    url: thebanner.com
+    publisher: [The Baltimore Banner, Baltimore Banner, thebanner.com]
+    threshold: 5
+
+  - key: telegraph
+    outlet: Telegraph
+    method: gnews
+    url: telegraph.co.uk
+    query: "(Israel OR Iran OR Gulf OR Saudi OR Pentagon OR Washington OR Trump)"
+    publisher: [The Telegraph, Telegraph, telegraph.co.uk]
+    threshold: 5
+    paywall: true
+
+
+  # Nothing indexed by Google and no feed found (2026-09-11); parked until a feed
+  # or a listing page turns up. Ask the owner what this site is.
+  - key: arsenal
+    outlet: Arsenal
+    method: gnews
+    url: arsenal.eu
+    publisher: [Arsenal, arsenal.eu]
+    threshold: 3
+    enabled: false
+
+
+  # Indigo Publications' other titles (Intelligence Online is above). Paywalled; the
+  # headline and standfirst are what Google indexes.
+  - key: africaintelligence
+    outlet: Africa Intelligence
+    method: gnews
+    url: africaintelligence.com
+    publisher: [Africa Intelligence, africaintelligence.com]
+    threshold: 4
+    paywall: true
+
+  - key: glitz
+    outlet: Glitz
+    method: gnews
+    url: glitz.paris
+    publisher: [Glitz, glitz.paris]
+    threshold: 4
+    paywall: true
+
+  # French-language; the English vocabulary will admit little from it until we add
+  # French terms. Kept so the desk sees what does come through.
+  - key: lalettre
+    outlet: La Lettre
+    method: gnews
+    url: lalettre.fr
+    publisher: [La Lettre, lalettre.fr]
+    threshold: 3
+    paywall: true
+
+  - key: wired
+    outlet: Wired
+    method: rss
+    url: "https://www.wired.com/feed/rss"
+    threshold: 5
+
+  - key: techreview
+    outlet: MIT Technology Review
+    method: rss
+    url: "https://www.technologyreview.com/feed/"
+    threshold: 5
+
+  - key: nymag
+    outlet: NY Mag
+    method: gnews
+    url: nymag.com
+    publisher: [New York Magazine, NY Mag, Intelligencer, nymag.com]
+    threshold: 5
+
+
+  - key: punchbowl
+    outlet: Punchbowl
+    method: gnews
+    url: punchbowl.news
+    publisher: [Punchbowl News, Punchbowl, punchbowl.news]
+    threshold: 4
+    paywall: true
+
+  - key: airmail
+    outlet: Air Mail
+    method: gnews
+    url: airmail.news
+    publisher: [Air Mail, AIR MAIL, airmail.news]
+    threshold: 4
+
+  - key: vanityfair
+    outlet: Vanity Fair
+    method: rss
+    url: "https://www.vanityfair.com/feed/rss"
+    threshold: 5
+
+  - key: thetimes
+    outlet: The Times
+    method: gnews
+    url: thetimes.com
+    query: "(Israel OR Iran OR Gulf OR Saudi OR Pentagon OR Washington OR Trump)"
+    publisher: [The Times, thetimes.com, The Sunday Times]
+    threshold: 5
+    paywall: true
+
+  # CNN's RSS feeds are years stale (checked 2026-09-11); Google News instead.
+  - key: cnn
+    outlet: CNN
+    method: gnews
+    url: cnn.com
+    query: "(Israel OR Iran OR Gaza OR Gulf OR Saudi OR Pentagon OR Congress OR Senate OR Trump)"
+    publisher: [CNN, cnn.com]
+    threshold: 5
+
+
+
+  - key: cbsnews
+    outlet: CBS News
+    method: rss
+    url: "https://www.cbsnews.com/latest/rss/main"
+    threshold: 5
+
+  # ── Individual writers the owner reads ──
+  - key: maxraskin
+    outlet: Max Raskin
+    desk: Substack
+    method: rss
+    url: "https://maxraskin.substack.com/feed"
+    threshold: 3
+
+  - key: friedman
+    outlet: NYT
+    desk: Friedman
+    method: gnews
+    url: nytimes.com
+    query: "\"Thomas L. Friedman\""
+    publisher: [The New York Times, NYT, nytimes.com]
+    threshold: 4
+    paywall: true
+
+  - key: ignatius
+    outlet: WaPo
+    desk: Ignatius
+    method: gnews
+    url: washingtonpost.com
+    query: "\"David Ignatius\""
+    publisher: [The Washington Post, Washington Post, washingtonpost.com]
+    threshold: 3
+    paywall: true
