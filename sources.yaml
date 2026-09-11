@@ -29,10 +29,10 @@
 
 max_items: 20
 
-# Publish-age cap. Real-time was the brief (owner, Sep 11): 20 minutes against a
-# 15-minute tick — the tightest window that does not let stories fall between runs.
-# Dedup handles novelty; this only caps how old a story may be when first posted.
-default_window_minutes: 20
+# Publish-age cap. Real-time was the brief (owner, Sep 11): a 5-minute tick with a
+# 10-minute window — the tightest that does not let stories fall between runs. Dedup
+# handles novelty; this only caps how old a story may be when first posted.
+default_window_minutes: 10
 
 sources:
 

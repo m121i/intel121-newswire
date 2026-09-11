@@ -11,7 +11,7 @@ on:
   # "Intel121 Newswire Pinger". Its only power is starting this workflow.
   workflow_dispatch:
   schedule:
-    - cron: "*/15 * * * *"
+    - cron: "*/5 * * * *"
 
 # poll.py commits watcher_state.json and status.json back after each run.
 permissions:

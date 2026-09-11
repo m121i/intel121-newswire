@@ -70,7 +70,7 @@ def _refuse_local_live(args) -> None:
 
 ROOT = Path(__file__).resolve().parent
 SOURCES_FILE = ROOT / "sources.yaml"
-DISPATCH_MINUTES = 15
+DISPATCH_MINUTES = 5
 
 
 def load_sources(only: list[str] | None) -> tuple[list[dict], dict]:

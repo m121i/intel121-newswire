@@ -23,7 +23,7 @@
 
 const REPO = 'm121i/intel121-newswire';
 const WORKFLOW = 'poll.yml';        // the newswire
-const EVERY_MINUTES = 15;
+const EVERY_MINUTES = 5;
 
 /**
  * The token lives in Script Properties, NOT here. This file is committed to a public
