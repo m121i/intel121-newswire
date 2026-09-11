@@ -264,12 +264,25 @@ def record(state: dict, files: tuple[str, ...] = ("watcher_state.json", "status.
                           f"{e}); committing LOCAL state — origin's claims may be lost",
                           file=__import__("sys").stderr)
         save(merged)
-        _git("add", *files)
+        # Only stage files that exist: on a brand-new repo status.json is written AFTER
+        # this call, and one missing path made `git add` fail as a whole — nothing was
+        # staged, the diff looked clean, and every run baselined again as a "first run"
+        # (Intel121, 11 Sep 2026: two silent baselines, no state on origin).
+        present = [f for f in files if (REPO / f).exists()]
+        if not present:
+            return
+        added = _git("add", *present)
+        if added.returncode != 0:
+            print(f"  ! state.record(): git add failed: {added.stderr.strip()[:200]}",
+                  file=__import__("sys").stderr)
         if _git("diff", "--cached", "--quiet").returncode == 0:
             return  # origin already has everything we do
         _git(*GIT_ID, "commit", "-q", "-m", "Update newswire state [skip ci]")
-        if _git("push", "-q", "origin", "HEAD:main").returncode == 0:
+        pushed = _git("push", "-q", "origin", "HEAD:main")
+        if pushed.returncode == 0:
             return
+        print(f"  ! state.record(): push refused, retrying: {pushed.stderr.strip()[:200]}",
+              file=__import__("sys").stderr)
         # Lost the race. Move HEAD *and the index* to the new origin, keep the working tree.
         #
         # This used to be `reset --soft HEAD~1` + `update-ref … origin/main`, which moves
@@ -282,6 +295,8 @@ def record(state: dict, files: tuple[str, ...] = ("watcher_state.json", "status.
         # upstream tree; the working tree (and the state files we are about to re-add) is
         # untouched, and only the files named in `files` are ever staged.
         _git("reset", "-q", "--mixed", "origin/main")
+    print("  ! state.record(): gave up pushing state after 5 attempts — the next run will "
+          "not know what this one posted", file=__import__("sys").stderr)
 
 
 def _merge_posted_log() -> None:

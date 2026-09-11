@@ -202,11 +202,15 @@ sources:
 
   # ══ Tier 2 — Israel ═════════════════════════════════════════════════════════
 
+  # Native feed answers 403 to GitHub's runners (fine from a laptop, 2026-09-11) — the
+  # exact cloud-blocking trap the kit warns about. Google News instead.
   - key: timesofisrael
     outlet: ToI
-    method: rss
-    url: "https://www.timesofisrael.com/feed/"
+    method: gnews
+    url: timesofisrael.com
+    publisher: [The Times of Israel, Times of Israel, timesofisrael.com]
     threshold: 3
+
 
   - key: jpost
     outlet: JPost
