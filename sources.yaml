@@ -764,3 +764,100 @@ sources:
     publisher: [The Washington Post, Washington Post, washingtonpost.com]
     threshold: 3
     paywall: true
+
+  # ══ Added 2026-09-11, second batch ═══════════════════════════════════════════
+
+  - key: stephens
+    outlet: NYT
+    desk: Bret Stephens
+    method: gnews
+    url: nytimes.com
+    query: "\"Bret Stephens\""
+    publisher: [The New York Times, NYT, nytimes.com]
+    threshold: 4
+    paywall: true
+
+  - key: rosenberg
+    outlet: NYT
+    desk: Yair Rosenberg
+    method: gnews
+    url: nytimes.com
+    query: "\"Yair Rosenberg\""
+    publisher: [The New York Times, NYT, nytimes.com]
+    threshold: 3
+    paywall: true
+
+  - key: schleifer
+    outlet: NYT
+    desk: Theodore Schleifer
+    method: gnews
+    url: nytimes.com
+    query: "\"Theodore Schleifer\""
+    publisher: [The New York Times, NYT, nytimes.com]
+    threshold: 3
+    paywall: true
+
+  # substack.com/@nadaveyal1 is a profile with no publication feed behind it yet
+  # (nadaveyal1.substack.com/feed serves a web page, 2026-09-11). Parked; ask the owner
+  # which publication he actually posts under.
+  - key: nadaveyal
+    outlet: Nadav Eyal
+    desk: Substack
+    method: rss
+    url: "https://nadaveyal1.substack.com/feed"
+    threshold: 3
+    enabled: false
+
+
+  - key: danielmael
+    outlet: Daniel Mael
+    desk: Substack
+    method: rss
+    url: "https://danielmael.substack.com/feed"
+    threshold: 3
+
+  - key: wapo_world
+    outlet: WaPo
+    desk: World
+    method: rss
+    url: "https://feeds.washingtonpost.com/rss/world"
+    threshold: 5
+    paywall: true
+
+  - key: theathletic
+    outlet: The Athletic
+    method: gnews
+    url: nytimes.com/athletic
+    query: "(NFL OR Patriots OR owners OR Goodell OR Kraft OR \"media rights\" OR stadium OR Revolution OR MLS)"
+    publisher: [The Athletic, The New York Times, nytimes.com]
+    threshold: 4
+    paywall: true
+
+  # Site answers 403 to non-browser fetches; Google News instead.
+  - key: texasmonthly
+    outlet: Texas Monthly
+    method: gnews
+    url: texasmonthly.com
+    publisher: [Texas Monthly, texasmonthly.com]
+    threshold: 5
+
+
+  # colossus.com/feed/ carries one item from years ago; Google News instead.
+  - key: colossus
+    outlet: Colossus
+    method: gnews
+    url: colossus.com
+    publisher: [Colossus, colossus.com]
+    threshold: 4
+
+
+
+  # The podcast's own site rate-limits fetches (429); this is the show's feed as listed
+  # in Apple's directory.
+  - key: callmeback
+    outlet: Call Me Back
+    desk: Podcast
+    method: rss
+    url: "https://rss.beehiiv.com/podcasts/01a0599f-c7dc-725e-a326-2afd78c94e7e.xml"
+    threshold: 3
+
