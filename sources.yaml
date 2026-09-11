@@ -1,0 +1,581 @@
+# Sources the Intel121 newswire polls each run. Data, not logic — poll.py re-reads this
+# file every run, so an edit takes effect on the next tick.
+#
+# The list is not a guess. It is drawn from what the Intel121 team actually posted in
+# #possible-content-to-push over the 14 days to 2026-09-11 (285 posts): WSJ 39, Bloomberg
+# 25, NYT 17, CNBC 13, AP 12, FT 12, Reuters 8, Semafor 7, Axios 7, Calcalist 6, Times of
+# Israel 5, The Atlantic 5, Politico 7 (US + Europe), Globes 4, The Information 4, The
+# National 3, Middle East Eye 3, White House 3, JPost 3, The Free Press 3 — plus the
+# long tail the team reaches for (Puck, Punchbowl, Free Beacon, Al-Monitor, War on the
+# Rocks, Intelligence Online, Responsible Statecraft, AGBI, Forbes Middle East, Zawya,
+# Treasury, SEC, CENTCOM, Congress). X posts (112), YouTube (23) and podcasts (~25) were
+# the biggest share and cannot be polled this way; those stay a human job.
+#
+# Per-source fields:
+#   key             short unique id; the dedup + status label
+#   outlet          how it appears in Slack
+#   desk            optional parenthetical after the outlet ("Politics", "Middle East")
+#   method          rss | gnews | gnews_entity | html
+#   url             rss: the feed. gnews: the domain to scope to.
+#   query           gnews: extra terms ANDed into the site: search.
+#                   gnews_entity: the whole query, NOT restricted to any site.
+#   publisher       gnews: accepted publisher names (Google relabels; list variants).
+#   threshold       score needed from this source. Lower for outlets that are all
+#                   on-beat; higher for general wires and consumer papers.
+#   paywall         adds "(paywall)" to the line — an internal reading aid.
+#   enabled         optional, defaults true
+#
+# Run `python poll.py --audit` monthly: a dead feed answers HTTP 200 and serves a web page.
+
+max_items: 20
+
+# Publish-age cap. Real-time was the brief (owner, Sep 11): 20 minutes against a
+# 15-minute tick — the tightest window that does not let stories fall between runs.
+# Dedup handles novelty; this only caps how old a story may be when first posted.
+default_window_minutes: 20
+
+sources:
+
+  # ══ Tier 1 — the wires and US papers the team pushes most ═══════════════════
+
+  - key: wsj
+    outlet: WSJ
+    method: gnews
+    url: wsj.com
+    query: "(Israel OR Iran OR Gaza OR Gulf OR Saudi OR UAE OR Qatar OR Pentagon OR defense OR Congress OR Senate OR Blackstone OR Apollo OR \"private credit\" OR \"data center\")"
+    publisher: [WSJ, The Wall Street Journal, Wall Street Journal]
+    threshold: 4
+    paywall: true
+
+  - key: bloomberg
+    outlet: Bloomberg
+    method: gnews
+    url: bloomberg.com
+    query: "(Israel OR Iran OR Gaza OR Gulf OR Saudi OR UAE OR Qatar OR Pentagon OR defense OR Congress OR Blackstone OR Apollo OR \"private credit\" OR \"data center\" OR sovereign)"
+    publisher: [Bloomberg, Bloomberg.com, Bloomberg Law]
+    threshold: 4
+    paywall: true
+
+  - key: nyt_world
+    outlet: NYT
+    desk: World
+    method: rss
+    url: "https://rss.nytimes.com/services/xml/rss/nyt/World.xml"
+    threshold: 5
+    paywall: true
+
+  - key: nyt_politics
+    outlet: NYT
+    desk: Politics
+    method: rss
+    url: "https://rss.nytimes.com/services/xml/rss/nyt/Politics.xml"
+    threshold: 5
+    paywall: true
+
+  - key: cnbc
+    outlet: CNBC
+    method: rss
+    url: "https://www.cnbc.com/id/100003114/device/rss/rss.html"
+    threshold: 5
+
+  - key: apnews
+    outlet: AP
+    method: gnews
+    url: apnews.com
+    query: "(Israel OR Iran OR Gaza OR Lebanon OR Syria OR Gulf OR Saudi OR Pentagon OR Congress OR Senate OR antisemitism)"
+    publisher: [AP News, The Associated Press, Associated Press, AP]
+    threshold: 4
+
+  - key: ft_world
+    outlet: FT
+    desk: World
+    method: rss
+    url: "https://www.ft.com/world?format=rss"
+    threshold: 4
+    paywall: true
+
+  - key: ft_mideast
+    outlet: FT
+    desk: Middle East
+    method: rss
+    url: "https://www.ft.com/middle-east?format=rss"
+    threshold: 3
+    paywall: true
+
+  - key: reuters
+    outlet: Reuters
+    method: gnews
+    url: reuters.com
+    query: "(Israel OR Iran OR Gaza OR Lebanon OR Syria OR Gulf OR Saudi OR UAE OR Qatar OR Pentagon OR Congress OR sanctions)"
+    publisher: [Reuters, Reuters.com]
+    threshold: 4
+
+  - key: semafor
+    outlet: Semafor
+    method: gnews
+    url: semafor.com
+    publisher: [Semafor, semafor.com]
+    threshold: 4
+
+
+  - key: axios
+    outlet: Axios
+    method: rss
+    url: "https://api.axios.com/feed/"
+    threshold: 4
+
+  - key: politico
+    outlet: Politico
+    method: rss
+    url: "https://rss.politico.com/politics-news.xml"
+    threshold: 5
+
+  - key: politico_eu
+    outlet: Politico
+    desk: Europe
+    method: rss
+    url: "https://www.politico.eu/feed/"
+    threshold: 5
+
+  - key: thehill
+    outlet: The Hill
+    method: rss
+    url: "https://thehill.com/feed/"
+    threshold: 5
+
+  - key: theatlantic
+    outlet: The Atlantic
+    method: rss
+    url: "https://www.theatlantic.com/feed/all/"
+    threshold: 5
+
+  - key: theinformation
+    outlet: The Information
+    method: rss
+    url: "https://www.theinformation.com/feed"
+    threshold: 4
+    paywall: true
+
+  - key: thefp
+    outlet: The Free Press
+    method: rss
+    url: "https://www.thefp.com/feed"
+    threshold: 5
+
+  - key: freebeacon
+    outlet: Free Beacon
+    method: rss
+    url: "https://freebeacon.com/feed/"
+    threshold: 5
+
+  - key: wapo_politics
+    outlet: WaPo
+    desk: Politics
+    method: rss
+    url: "https://feeds.washingtonpost.com/rss/politics"
+    threshold: 5
+    paywall: true
+
+  - key: foxnews_politics
+    outlet: Fox News
+    desk: Politics
+    method: rss
+    url: "https://moxie.foxnews.com/google-publisher/politics.xml"
+    threshold: 5
+
+  - key: puck
+    outlet: Puck
+    method: gnews
+    url: puck.news
+    publisher: [Puck]
+    threshold: 4
+    paywall: true
+
+  - key: economist
+    outlet: The Economist
+    method: gnews
+    url: economist.com
+    query: "(Israel OR Iran OR Gulf OR Saudi OR Pentagon OR Congress)"
+    publisher: [The Economist]
+    threshold: 4
+    paywall: true
+
+  # ══ Tier 2 — Israel ═════════════════════════════════════════════════════════
+
+  - key: timesofisrael
+    outlet: ToI
+    method: rss
+    url: "https://www.timesofisrael.com/feed/"
+    threshold: 3
+
+  - key: jpost
+    outlet: JPost
+    method: rss
+    url: "https://www.jpost.com/rss/rssfeedsfrontpage.aspx"
+    threshold: 4
+
+  - key: haaretz
+    outlet: Haaretz
+    method: gnews
+    url: haaretz.com
+    publisher: [Haaretz, Haaretz.com]
+    threshold: 4
+    paywall: true
+
+  - key: israelhayom
+    outlet: Israel Hayom
+    method: rss
+    url: "https://www.israelhayom.com/feed/"
+    threshold: 4
+
+  - key: ynet
+    outlet: Ynet
+    method: rss
+    url: "https://www.ynetnews.com/Integration/StoryRss3082.xml"
+    threshold: 4
+
+  - key: calcalist
+    outlet: Calcalist
+    desk: CTech
+    method: gnews
+    url: calcalistech.com
+    publisher: [CTech, Calcalist, calcalistech.com, CTech by Calcalist]
+    threshold: 3
+
+  - key: globes
+    outlet: Globes
+    method: gnews
+    url: en.globes.co.il
+    publisher: [Globes, Globes English, en.globes.co.il]
+    threshold: 3
+
+  - key: jta
+    outlet: JTA
+    method: rss
+    url: "https://www.jta.org/feed"
+    threshold: 4
+
+  # ══ Tier 2 — Gulf and the region ════════════════════════════════════════════
+
+  - key: thenational
+    outlet: The National
+    method: rss
+    url: "https://www.thenationalnews.com/arc/outboundfeeds/rss/?outputType=xml"
+    threshold: 4
+
+  - key: middleeasteye
+    outlet: Middle East Eye
+    method: rss
+    url: "https://www.middleeasteye.net/rss"
+    threshold: 4
+
+  - key: agbi
+    outlet: AGBI
+    method: rss
+    url: "https://www.agbi.com/feed/"
+    threshold: 4
+
+  - key: forbesme
+    outlet: Forbes Middle East
+    method: gnews
+    url: forbesmiddleeast.com
+    publisher: [Forbes Middle East, forbesmiddleeast.com]
+    threshold: 4
+
+  - key: gulfnews
+    outlet: Gulf News
+    method: gnews
+    url: gulfnews.com
+    query: "(business OR investment OR Israel OR Iran OR sovereign)"
+    publisher: [Gulf News, gulfnews.com]
+    threshold: 5
+
+  - key: zawya
+    outlet: Zawya
+    method: gnews
+    url: zawya.com
+    publisher: [Zawya, zawya.com]
+    threshold: 4
+
+  - key: aljazeera
+    outlet: Al Jazeera
+    method: rss
+    url: "https://www.aljazeera.com/xml/rss/all.xml"
+    threshold: 5
+
+  - key: almonitor
+    outlet: Al-Monitor
+    method: gnews
+    url: al-monitor.com
+    publisher: [Al-Monitor, al-monitor.com]
+    threshold: 3
+
+  - key: amwaj
+    outlet: Amwaj
+    method: gnews
+    url: amwaj.media
+    publisher: [Amwaj.media, Amwaj, amwaj.media]
+    threshold: 3
+
+  - key: meed
+    outlet: MEED
+    method: gnews
+    url: meed.com
+    publisher: [MEED, meed.com]
+    threshold: 4
+    paywall: true
+
+  # State media, labelled as such — Dean asked to see what Tehran and Damascus put out,
+  # weighted differently from reporting.
+  - key: tasnim
+    outlet: Tasnim
+    desk: Iran state media
+    method: gnews
+    url: tasnimnews.com
+    publisher: [Tasnim News Agency, Tasnim, tasnimnews.com]
+    threshold: 4
+
+
+  - key: irna
+    outlet: IRNA
+    desk: Iran state media
+    method: rss
+    url: "https://en.irna.ir/rss"
+    threshold: 4
+
+  - key: sana
+    outlet: SANA
+    desk: Syria state media
+    method: gnews
+    url: sana.sy
+    publisher: [SANA, Syrian Arab News Agency, sana.sy]
+    threshold: 4
+
+
+  # ══ Tier 3 — specialist: security, defense tech, cyber, capital ═══════════════
+
+  - key: warontherocks
+    outlet: War on the Rocks
+    method: rss
+    url: "https://warontherocks.com/feed/"
+    threshold: 3
+
+  - key: intelligenceonline
+    outlet: Intelligence Online
+    method: gnews
+    url: intelligenceonline.com
+    publisher: [Intelligence Online, intelligenceonline.com]
+    threshold: 3
+    paywall: true
+
+  - key: responsiblestatecraft
+    outlet: Responsible Statecraft
+    method: rss
+    url: "https://responsiblestatecraft.org/feed/"
+    threshold: 4
+
+  - key: foreignpolicy
+    outlet: Foreign Policy
+    method: rss
+    url: "https://foreignpolicy.com/feed/"
+    threshold: 4
+    paywall: true
+
+  - key: foreignaffairs
+    outlet: Foreign Affairs
+    method: gnews
+    url: foreignaffairs.com
+    publisher: [Foreign Affairs, foreignaffairs.com]
+    threshold: 4
+    paywall: true
+
+  - key: csis
+    outlet: CSIS
+    desk: Think tank
+    method: gnews
+    url: csis.org
+    publisher: [CSIS, Center for Strategic and International Studies, csis.org]
+    threshold: 4
+
+  - key: fdd
+    outlet: FDD
+    desk: Think tank
+    method: gnews
+    url: fdd.org
+    publisher: [FDD, Foundation for Defense of Democracies, fdd.org]
+    threshold: 3
+
+  - key: breakingdefense
+    outlet: Breaking Defense
+    method: rss
+    url: "https://breakingdefense.com/feed/"
+    threshold: 3
+
+  - key: defensenews
+    outlet: Defense News
+    method: rss
+    url: "https://www.defensenews.com/arc/outboundfeeds/rss/?outputType=xml"
+    threshold: 3
+
+  - key: therecord
+    outlet: The Record
+    desk: Cyber
+    method: rss
+    url: "https://therecord.media/feed"
+    threshold: 3
+
+  - key: cyberscoop
+    outlet: CyberScoop
+    method: rss
+    url: "https://cyberscoop.com/feed/"
+    threshold: 3
+
+  - key: dcd
+    outlet: Data Center Dynamics
+    method: rss
+    url: "https://www.datacenterdynamics.com/en/rss/"
+    threshold: 3
+
+  - key: techcrunch
+    outlet: TechCrunch
+    method: rss
+    url: "https://techcrunch.com/feed/"
+    threshold: 5
+
+  # ══ Tier 3 — sports business (Kraft's world) ═════════════════════════════════
+
+  - key: sportico
+    outlet: Sportico
+    method: rss
+    url: "https://www.sportico.com/feed/"
+    threshold: 3
+
+  - key: fos
+    outlet: Front Office Sports
+    method: rss
+    url: "https://frontofficesports.com/feed/"
+    threshold: 3
+
+  - key: espn_nfl
+    outlet: ESPN
+    desk: NFL
+    method: gnews
+    url: espn.com
+    query: "NFL (owners OR league OR Patriots OR Goodell OR Kraft OR rights OR stadium)"
+    publisher: [ESPN, ESPN.com]
+    threshold: 4
+
+
+  # ══ Primary sources — the principals in their own words ═══════════════════════
+  # Dean's rule: the statement itself beats the story about it.
+
+  - key: whitehouse
+    outlet: White House
+    desk: Primary
+    method: rss
+    url: "https://www.whitehouse.gov/news/feed/"
+    threshold: 3
+
+  - key: statedept
+    outlet: State Department
+    desk: Primary
+    method: rss
+    url: "https://www.state.gov/rss-feed/press-releases/feed/"
+    threshold: 3
+
+  - key: treasury
+    outlet: Treasury
+    desk: Primary
+    method: gnews
+    url: home.treasury.gov
+    query: "(sanctions OR OFAC OR designates OR designation)"
+    publisher: [U.S. Department of the Treasury, Treasury, home.treasury.gov]
+    threshold: 3
+
+
+  - key: sec
+    outlet: SEC
+    desk: Primary
+    method: rss
+    url: "https://www.sec.gov/news/pressreleases.rss"
+    threshold: 4
+
+  - key: centcom
+    outlet: CENTCOM
+    desk: Primary
+    method: gnews
+    url: centcom.mil
+    publisher: [U.S. Central Command, CENTCOM, centcom.mil]
+    threshold: 3
+
+  - key: pmo_israel
+    outlet: Israel PMO
+    desk: Primary
+    method: gnews
+    url: gov.il
+    query: "\"Prime Minister\""
+    publisher: [gov.il, Gov.il, Israel Government]
+    threshold: 3
+
+  # ══ Entity searches — how a story surfaces from an outlet nobody listed ═══════
+
+  - key: q_principals_us
+    outlet: Principals
+    desk: US
+    method: gnews_entity
+    query: "(Witkoff OR Kushner OR Rubio OR Hegseth OR Vance OR CENTCOM) (Israel OR Iran OR Gaza OR Gulf OR Saudi OR Qatar OR Lebanon OR Syria)"
+    threshold: 4
+
+  - key: q_israel_leaders
+    outlet: Israel leaders
+    method: gnews_entity
+    query: "(Netanyahu OR Herzog OR Lapid OR Bennett OR Gantz OR Eisenkot OR \"Ben-Gvir\" OR Smotrich OR \"Yair Golan\")"
+    threshold: 4
+
+  - key: q_gulf_capital
+    outlet: Gulf capital
+    method: gnews_entity
+    query: "(\"Public Investment Fund\" OR PIF OR Mubadala OR ADIA OR ADQ OR \"Qatar Investment Authority\" OR MGX OR HUMAIN OR \"Al-Rumayyan\" OR Tahnoun)"
+    threshold: 4
+
+  - key: q_defense_tech
+    outlet: Defense tech
+    method: gnews_entity
+    query: "(Anduril OR Palantir OR Saronic OR Shield AI OR Helsing OR Elbit OR Rafael OR \"Israel Aerospace\" OR \"defense tech\" OR \"defence tech\")"
+    threshold: 4
+
+  - key: q_private_capital
+    outlet: Private capital
+    method: gnews_entity
+    query: "(Blackstone OR \"Apollo Global\" OR KKR OR Carlyle OR \"private credit\" OR Schwarzman OR \"Marc Rowan\" OR \"Jonathan Gray\") -site:x.com -site:instagram.com -site:amazonaws.com -site:youtube.com"
+    threshold: 4
+
+  - key: q_jewish_politics
+    outlet: US politics & Israel
+    method: gnews_entity
+    query: "(AIPAC OR \"J Street\" OR antisemitism OR \"anti-Israel\" OR \"pro-Israel\") (Senate OR Congress OR primary OR 2028 OR campaign OR candidate)"
+    threshold: 4
+
+  - key: q_michigan
+    outlet: Michigan Senate
+    method: gnews_entity
+    query: "(\"El-Sayed\" OR \"Mike Rogers\") Michigan Senate"
+    threshold: 3
+
+  - key: q_kraft_nfl
+    outlet: NFL & Kraft
+    method: gnews_entity
+    query: "(\"Robert Kraft\" OR \"Kraft Group\" OR Patriots OR Goodell OR \"NFL owners\" OR \"media rights\" NFL) -site:x.com -site:instagram.com -site:youtube.com"
+    threshold: 4
+
+  - key: q_syria
+    outlet: Syria
+    method: gnews_entity
+    query: "(\"al-Sharaa\" OR \"Syrian Investment Authority\" OR \"Syria reconstruction\" OR \"Syria sanctions\")"
+    threshold: 3
+
+  - key: q_abraham_accords
+    outlet: Abraham Accords
+    method: gnews_entity
+    query: "(\"Abraham Accords\" OR normalization Israel Saudi OR \"Saudi-Israel\")"
+    threshold: 3

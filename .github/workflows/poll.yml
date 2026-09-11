@@ -1,0 +1,60 @@
+name: intel121-newswire
+
+on:
+  # Fired every 15 minutes by an Apps Script time-driven trigger on Google's servers —
+  # the same scheduling mechanism the JI Newswire uses, and reliable where GitHub's own
+  # cron is not. Measured on this repo over 29-30 August, `schedule` fired every two to
+  # six hours rather than every fifteen minutes; it is kept below only as a fallback if
+  # the Apps Script trigger is ever deleted.
+  #
+  # The pinger lives at script.google.com under the Intel121 Google account, project
+  # "Intel121 Newswire Pinger". Its only power is starting this workflow.
+  workflow_dispatch:
+  schedule:
+    - cron: "*/15 * * * *"
+
+# poll.py commits watcher_state.json and status.json back after each run.
+permissions:
+  contents: write
+
+# One run at a time. Note what is NOT here: any in-code concurrency lock. Two separate
+# outages in the JI original came from the guard rather than from concurrency — a real
+# lock wedged permanently when a run was killed while holding it, and its self-expiring
+# replacement then turned away two scheduled runs. Claim-before-send already prevents
+# double posting; overlapping runs merely waste effort, while a wedged guard stops
+# everything. cancel-in-progress stays false so a run is never killed mid-post.
+concurrency:
+  group: poll
+  cancel-in-progress: false
+
+jobs:
+  poll:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      # One poll per trigger, which is what the JI Newswire does.
+      #
+      # Cadence comes from an Apps Script time-driven trigger on Google's servers, firing
+      # every 15 minutes — the same mechanism JI uses, and reliable where GitHub's own
+      # cron is not (measured firing every two to six hours on this repo). The `schedule`
+      # below is only a fallback if that trigger is ever deleted.
+      #
+      # An earlier version looped inside the job to work around GitHub's scheduler. It
+      # caused two problems worth remembering: a long job kept running old code for an
+      # hour after a fix was deployed, and its final pass exited non-zero — `[ $i -lt
+      # $PASSES ] && sleep` is false on the last iteration — so every run was marked
+      # failed regardless of what happened.
+      - run: python poll.py
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+      # Runs on failure too: status.json is most useful precisely when the run broke,
+      # and it is the only thing that will explain why after the fact.
+      - if: always()
+        run: python poll.py --status

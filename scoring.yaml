@@ -1,0 +1,1169 @@
+# Relevance vocabulary for the Intel121 newswire. Data, not logic — poll.py re-reads this
+# every run. Built from Intel121's own material: the clients' standing instructions and
+# watchlists, the 638 card titles the desk has published since July (tests/
+# headlines_positive.txt), and the 14-day audit of #possible-content-to-push.
+#
+# The beat, in one sentence: the worlds Intel121's clients track — Israel and the Middle
+# East, US foreign policy and the domestic politics of Israel and the Jewish community,
+# Gulf sovereign capital, defense tech and cyber, Washington's effect on private capital,
+# and sports business. Six anchors, two companions, one threshold. Run
+# `python poll.py --selftest` after any edit: it reports recall against the desk's real
+# headlines and the pass rate on an off-beat negative set.
+
+default_threshold: 4
+
+# An item must hit at least one of these axes, whatever its score. A place name alone
+# is not enough (geography is 2, threshold 4): "Saudi Arabia hosts tennis final" dies,
+# "Saudi Arabia's PIF takes stake in tennis tour" lives (geography + entity + sector).
+require_anchor: [entity, principal, geography, security, jewish]
+
+# Distinct axes the HEADLINE itself must hit.
+min_title_axes: 2
+money_points: 1
+money_pattern: '\$|\bbillion\b|\bmillion\b|\btrillion\b|\bbn\b|\d+\s?%|\bper cent\b|\bpercent\b'
+
+# Which digest section a story lands in. Checked in order; first match wins; the last
+# entry is the default. Labels live in src/digest.py.
+default_category: israel_mideast
+
+judge: false
+
+axes:
+  # ── Named institutions, companies, funds, groups ─────────────────────────
+  - name: entity
+    points: 3
+    terms:
+      - Mahan Air
+      - 2PointZero
+      - Alpha Dhabi
+      - Multiply
+      - Boring Company
+      - Marlan Space
+      - Anthropic
+      - OpenAI
+      - Nvidia
+      - xAI
+      - Stargate
+      - Core42
+      - Presight
+      - Space42
+      - Edge Group
+      - EDGE
+      - NEOM
+      - Diriyah
+      - Qiddiya
+      - Red Sea Global
+      - Saudi Aramco
+      - Ma'aden
+      - SABIC
+      - Emaar
+      - DAMAC
+      - Investcorp
+      - Kingdom Holding
+      - Alwaleed
+      - Dubai Holding
+      - Emirates NBD
+      - First Abu Dhabi Bank
+      - Mubadala Capital
+      - Chevron
+      - Exxon
+      - Shell
+      - BP
+      - TotalEnergies
+      - Halliburton
+      - SLB
+      - Schlumberger
+      - Wood Mackenzie
+      - Kpler
+      - Vortexa
+      - UKMTO
+      - Maersk
+      - MSC
+      - Hapag-Lloyd
+      - Suez Canal
+      - Panama Canal
+      # US government and security establishment
+      - White House
+      - State Department
+      - Pentagon
+      - Department of War
+      - Department of Defense
+      - CENTCOM
+      - Central Command
+      - National Security Council
+      - Treasury
+      - OFAC
+      - SEC
+      - FCC
+      - Federal Reserve
+      - Congress
+      - Senate
+      - House Republicans
+      - House Democrats
+      - Foreign Relations Committee
+      - Armed Services Committee
+      - Supreme Court
+      - CIA
+      - FBI
+      - NSA
+      - DHS
+      # Israel
+      - IDF
+      - Israel Defense Forces
+      - Mossad
+      - Shin Bet
+      - Knesset
+      - Prime Minister's Office
+      - PMO
+      - Likud
+      - Yesh Atid
+      - Blue and White
+      - Otzma Yehudit
+      - Religious Zionism
+      - Bank of Israel
+      - Elbit
+      - Rafael
+      - Israel Aerospace Industries
+      - IAI
+      # Adversaries and armed groups
+      - Hamas
+      - Hezbollah
+      - Houthis
+      - Houthi
+      - IRGC
+      - Revolutionary Guard
+      - Quds Force
+      - Islamic Jihad
+      - Saraya al-Quds
+      - Al-Qassam
+      - PFLP
+      - ISIS
+      - Islamic State
+      - Al Qaeda
+      - Fatah
+      - Palestinian Authority
+      - UNRWA
+      - IAEA
+      - Iran's Supreme National Security Council
+      # Gulf sovereign capital and champions
+      - PIF
+      - Public Investment Fund
+      - Mubadala
+      - ADIA
+      - ADQ
+      - QIA
+      - Qatar Investment Authority
+      - Kuwait Investment Authority
+      - MGX
+      - G42
+      - HUMAIN
+      - IHC
+      - International Holding Company
+      - Lunate
+      - Sanabil
+      - NEOM
+      - Aramco
+      - ADNOC
+      - QatarEnergy
+      - Masdar
+      - DP World
+      - AD Ports
+      - Emirates
+      - Etihad
+      - Qatar Airways
+      - Al Maktoum family office
+      - AMKM
+      - Syrian Investment Authority
+      # US politics and the Jewish community
+      - AIPAC
+      - J Street
+      - ADL
+      - Anti-Defamation League
+      - Democratic Majority for Israel
+      - United Democracy Project
+      - RJC
+      - Republican Jewish Coalition
+      - JDCA
+      - Jewish Federations
+      - Conference of Presidents
+      - ISNA
+      - CAIR
+      - DNC
+      - RNC
+      - Heritage Foundation
+      - FDD
+      - Foundation for Defense of Democracies
+      - Washington Institute
+      - CSIS
+      - Quincy Institute
+      # Defense tech and cyber
+      - Anduril
+      - Palantir
+      - Saronic
+      - Shield AI
+      - Helsing
+      - Scale AI
+      - SpaceX
+      - Starlink
+      - Lockheed
+      - Raytheon
+      - RTX
+      - Northrop
+      - General Dynamics
+      - Boeing Defense
+      - L3Harris
+      - Cyber Command
+      - CISA
+      - NSO
+      - Paragon
+      - Unit 8200
+      # Private capital and data centers
+      - Blackstone
+      - Apollo Global
+      - Apollo Global Management
+      - Athene
+      - KKR
+      - Carlyle
+      - Ares
+      - Brookfield
+      - Blue Owl
+      - Goldman Sachs
+      - JPMorgan
+      - Morgan Stanley
+      - BlackRock
+      - Equinix
+      - QTS
+      - Digital Realty
+      - CoreWeave
+      - Invenergy
+      - Champlain Hudson
+      - Data Center Coalition
+      # Sports business
+      - NFL
+      - NFL owners
+      - Patriots
+      - Kraft Group
+      - New England Revolution
+      - MLS
+      - NBA
+      - FIFA
+      - UEFA
+      - LIV Golf
+      - PGA Tour
+      - Premier League
+      - Formula 1
+      - F1
+      - ESPN
+      - Fox Sports
+      - Gillette Stadium
+      # Media and platforms that make news
+      - Axios
+      - Al Jazeera
+      - Truth Social
+      - Fox News
+      - CNN
+      - CBS News
+      - Paramount
+      - Warner Bros
+      - Comcast
+
+  # ── Named people whose every move matters ────────────────────────────────
+  - name: principal
+    points: 3
+    terms:
+      # Washington
+      - Trump
+      - Vance
+      - Rubio
+      - Hegseth
+      - Witkoff
+      - Kushner
+      - Waltz
+      - Gabbard
+      - Ratcliffe
+      - Bessent
+      - Lutnick
+      - Huckabee
+      - Boehler
+      - Leavitt
+      - Wiles
+      - Miller
+      - Bannon
+      - Musk
+      - Schumer
+      - Jeffries
+      - Johnson
+      - Thune
+      - McConnell
+      - Graham
+      - Cotton
+      - Cruz
+      - Rand Paul
+      - Massie
+      - Fetterman
+      - Ocasio-Cortez
+      - AOC
+      - Omar
+      - Tlaib
+      - Sanders
+      - Warren
+      - Murphy
+      - Van Hollen
+      - Slotkin
+      - Torres
+      - Goldman
+      - Khanna
+      - Newsom
+      - Shapiro
+      - Whitmer
+      - Pritzker
+      - Buttigieg
+      - Harris
+      - Booker
+      - Beshear
+      - Moore
+      - Polis
+      - Ossoff
+      - El-Sayed
+      - Mike Rogers
+      - Mamdani
+      - Lurie
+      - Adams
+      - Cuomo
+      - Hochul
+      - DeSantis
+      - Rubin
+      - Obama
+      - Biden
+      - Clinton
+      - Pelosi
+      - Blinken
+      - Sullivan
+      - McGurk
+      - Petraeus
+      - Stavridis
+      - Kurilla
+      - Cooper
+      # Israel
+      - Netanyahu
+      - Bibi
+      - Herzog
+      - Lapid
+      - Bennett
+      - Gantz
+      - Eisenkot
+      - Ben-Gvir
+      - Ben Gvir
+      - Smotrich
+      - Yair Golan
+      - Lieberman
+      - Deri
+      - Katz
+      - Sa'ar
+      - Saar
+      - Dermer
+      - Zamir
+      - Halevi
+      - Bar
+      - Barnea
+      - Leiter
+      - Gallant
+      - Levin
+      - Amit Segal
+      - Nadav Eyal
+      - Dahlan
+      # Middle East
+      - MBS
+      - Mohammed bin Salman
+      - MBZ
+      - Mohamed bin Zayed
+      - Tahnoun
+      - Al-Rumayyan
+      - Rumayyan
+      - Al Maktoum
+      - Turki Al-Sheikh
+      - Turki Alalshikh
+      - Al Thani
+      - Tamim
+      - Sisi
+      - Erdogan
+      - Erdoğan
+      - Abdullah
+      - Khamenei
+      - Pezeshkian
+      - Araghchi
+      - Ghalibaf
+      - Larijani
+      - Qalibaf
+      - al-Sharaa
+      - Sharaa
+      - Jolani
+      - Aoun
+      - Salam
+      - Berri
+      - Qassem
+      - Nasrallah
+      - Sinwar
+      - Haniyeh
+      - Abbas
+      - Barghouti
+      - Abdul-Malik al-Houthi
+      - Grossi
+      - Putin
+      - Xi
+      - Zelensky
+      - Starmer
+      - Macron
+      - Merz
+      # Capital and sports
+      - Schwarzman
+      - Jonathan Gray
+      - Marc Rowan
+      - Rowan
+      - Leon Black
+      - Tom Nides
+      - Nides
+      - Dimon
+      - Fink
+      - Solomon
+      - Altman
+      - Huang
+      - Zuckerberg
+      - Bezos
+      - Thiel
+      - Andreessen
+      - Ackman
+      - Robert Kraft
+      - Jonathan Kraft
+      - Josh Kraft
+      - Goodell
+      - Jerry Jones
+      - Vrabel
+      - Brady
+      - Belichick
+      - Infantino
+      - Michael Rubin
+      - Katzenberg
+      - Ellison
+      - Redstone
+      - Zaslav
+      - Iger
+      - Sarandos
+
+  # ── Where it happens ─────────────────────────────────────────────────────
+  - name: geography
+    points: 2
+    terms:
+      - Mecca
+      - Medina
+      - Pakistan
+      - Pakistani
+      - China
+      - Chinese
+      - Beijing
+      - Russia
+      - Russian
+      - Moscow
+      - Europe
+      - European
+      - EU
+      - UK
+      - Britain
+      - British
+      - London
+      - Paris
+      - Berlin
+      - Africa
+      - African
+      - India
+      - Indian
+      - Houthi-controlled
+      - Hodeidah
+      - Sanaa
+      - Aden
+      - Kurdish
+      - Kurdistan
+      - Erbil
+      - Basra
+      - Nablus
+      - Hebron
+      - Rafah
+      - Khan Younis
+      - Ramallah
+      - Haifa
+      - Eilat
+      - Beersheba
+      - Sderot
+      - Galilee
+      - Negev
+      - Israel
+      - Israeli
+      - Israelis
+      - Jerusalem
+      - Tel Aviv
+      - Gaza
+      - West Bank
+      - Judea
+      - Samaria
+      - Golan
+      - Lebanon
+      - Lebanese
+      - Beirut
+      - Syria
+      - Syrian
+      - Damascus
+      - Iran
+      - Iranian
+      - Tehran
+      - Iraq
+      - Iraqi
+      - Baghdad
+      - Yemen
+      - Yemeni
+      - Red Sea
+      - Hormuz
+      - Bab el-Mandeb
+      - Gulf
+      - GCC
+      - Saudi
+      - Saudi Arabia
+      - Riyadh
+      - Jeddah
+      - UAE
+      - Emirati
+      - Abu Dhabi
+      - Dubai
+      - Qatar
+      - Qatari
+      - Doha
+      - Bahrain
+      - Kuwait
+      - Oman
+      - Egypt
+      - Egyptian
+      - Cairo
+      - Sinai
+      - Jordan
+      - Jordanian
+      - Amman
+      - Turkey
+      - Türkiye
+      - Turkish
+      - Ankara
+      - Sudan
+      - Libya
+      - Morocco
+      - Middle East
+      - Mideast
+      - Levant
+      - Ukraine
+      - Taiwan
+      - Michigan
+      - Detroit
+      - Dearborn
+      - New York
+      - Boston
+      - Foxborough
+      - Washington
+      - Capitol Hill
+
+  # ── Security: war, terror, sanctions, nuclear — on this beat these are the story ──
+  - name: security
+    points: 3
+    terms:
+      - Iran war
+      - war with Iran
+      - military
+      - military operation
+      - military operations
+      - war
+      - wars
+      - wartime
+      - blockade
+      - strait
+      - Strait of Hormuz
+      - navy
+      - naval
+      - army
+      - air force
+      - forces
+      - escalation
+      - escalate
+      - de-escalation
+      - tensions
+      - retaliation
+      - retaliate
+      - intercepted
+      - intercept
+      - hacktivist
+      - hacktivists
+      - DDoS
+      - breach
+      - data breach
+      - spyware
+      - munitions
+      - loitering munitions
+      - air defense
+      - air defence
+      - missile defense
+      - defense ministry
+      - Defense Minister
+      - Defence Minister
+      - defense chief
+      - security cabinet
+      - war cabinet
+      - reservists
+      - evacuation
+      - evacuate
+      - humanitarian
+      - aid convoy
+      - famine
+      - siege
+      - proxy
+      - proxies
+      - militia
+      - militias
+      - jihadist
+      - gunmen
+      - insurgent
+      - insurgents
+      - warhead
+      - enriched
+      - IAEA inspectors
+      - boycott
+      - strikes
+      - strike
+      - ceasefire
+      - cease-fire
+      - hostage
+      - hostages
+      - truce
+      - airstrike
+      - airstrikes
+      - air strike
+      - strike on
+      - strikes on
+      - missile
+      - missiles
+      - ballistic
+      - drone attack
+      - drone strike
+      - rocket
+      - rockets
+      - interceptor
+      - Iron Dome
+      - Arrow
+      - THAAD
+      - nuclear
+      - enrichment
+      - uranium
+      - centrifuge
+      - sanctions
+      - sanction
+      - designation
+      - designated
+      - terror
+      - terrorist
+      - terrorism
+      - attack in
+      - shooting in
+      - stabbing
+      - bombing
+      - assassination
+      - assassinated
+      - killed in
+      - abducted
+      - kidnapped
+      - offensive
+      - incursion
+      - ground operation
+      - occupation
+      - annexation
+      - settlements
+      - settlers
+      - normalization
+      - normalisation
+      - peace deal
+      - peace talks
+      - negotiations
+      - mediation
+      - mediators
+      - intelligence
+      - espionage
+      - spy
+      - spies
+      - cyberattack
+      - cyber attack
+      - hack
+      - hacked
+      - hackers
+      - ransomware
+      - influence operation
+      - disinformation
+      - propaganda
+      - election interference
+      - regime
+      - coup
+      - protests
+      - crackdown
+      - executed
+      - warship
+      - carrier
+      - deployment
+      - deploys
+      - troops
+      - tanker
+      - tankers
+      - shipping lane
+      - war-risk
+      - war risk
+      - reroute
+      - rerouting
+      - arms sale
+      - arms deal
+      - weapons
+      - munitions
+      - F-35
+      - F-15
+      - fighter jets
+      - hypersonic
+      - counterterrorism
+      - antisemitic attack
+
+  # ── The Jewish community and the politics of Israel in the US ────────────
+  - name: jewish
+    points: 3
+    terms:
+      - settlement
+      - settler
+      - Jewish voters
+      - Jewish community
+      - Jewish leaders
+      - Jewish groups
+      - Jewish organizations
+      - Jewish organisations
+      - Jewish donors
+      - kippah
+      - yeshiva
+      - Jewish students
+      - JCC
+      - antisemitism
+      - antisemitic
+      - anti-Semitism
+      - anti-Semitic
+      - Jewish
+      - Jews
+      - Jew
+      - synagogue
+      - Holocaust
+      - Zionist
+      - Zionism
+      - anti-Zionist
+      - pro-Israel
+      - anti-Israel
+      - BDS
+      - boycott Israel
+      - Chabad
+      - Hillel
+      - JCRC
+      - rabbi
+      - Orthodox
+      - Hasidic
+      - Haredi
+      - kosher
+      - Yom Kippur
+      - Rosh Hashanah
+      - Passover
+      - campus protests
+      - encampment
+      - Title VI
+      - Israel lobby
+      - two-state
+      - two state
+      - recognize Palestine
+      - recognition of Palestine
+      - Palestinian state
+      - Palestinian statehood
+      - genocide
+      - apartheid
+      - intifada
+
+  # ── Companion: the business, policy, and tech vocabulary of the beat ────
+  - name: sector
+    points: 2
+    terms:
+      - data-center
+      - data-centers
+      - tax breaks
+      - tax break
+      - buildout
+      - build-out
+      - expansion
+      - export
+      - exports
+      - satellites
+      - launch
+      - launches
+      - contractor
+      - contractors
+      - subcontractor
+      - supply chain
+      - shipping
+      - freight
+      - cargo
+      - pipeline
+      - crude oil
+      - Brent
+      - refinery
+      - valuation
+      - stake sale
+      - joint venture
+      - partnership
+      - agreement
+      - MoU
+      - memorandum
+      - deal with
+      - deal to
+      - fund
+      - funds
+      - capital
+      - financing
+      - loan
+      - bond
+      - bonds
+      - sukuk
+      - debt
+      - credit
+      - lender
+      - lenders
+      - bank
+      - banks
+      - bankruptcy
+      - Chapter 11
+      - filing
+      - filings
+      - earnings
+      - revenue
+      - profit
+      - shares
+      - stock
+      - stocks
+      - market
+      - markets
+      - index
+      - trade
+      - commerce
+      - hedge fund
+      - asset manager
+      - family office
+      - defense tech
+      - defence tech
+      - defense startup
+      - drone
+      - drones
+      - artificial intelligence
+      - AI model
+      - AI models
+      - AI infrastructure
+      - AI buildout
+      - AI in warfare
+      - frontier model
+      - data center
+      - data centers
+      - data centre
+      - hyperscaler
+      - GPU
+      - GPUs
+      - semiconductor
+      - export controls
+      - cybersecurity
+      - cyber
+      - private credit
+      - private equity
+      - sovereign wealth
+      - sovereign fund
+      - investment
+      - invests
+      - investing
+      - stake
+      - acquisition
+      - acquire
+      - acquires
+      - merger
+      - buyout
+      - IPO
+      - listing
+      - valuation
+      - funding round
+      - raises
+      - Series A
+      - Series B
+      - Series C
+      - venture
+      - VC
+      - startup
+      - startups
+      - unicorn
+      - contract
+      - contracts
+      - procurement
+      - Pentagon contract
+      - budget
+      - appropriations
+      - reconciliation
+      - tariff
+      - tariffs
+      - trade deal
+      - regulator
+      - regulation
+      - deregulation
+      - antitrust
+      - retirement
+      - 401(k)
+      - alternatives
+      - alternative assets
+      - infrastructure
+      - energy
+      - oil
+      - crude
+      - OPEC
+      - LNG
+      - grid
+      - power plant
+      - nuclear power
+      - transmission
+      - real estate
+      - REIT
+      - lobbying
+      - lobbyist
+      - donor
+      - donors
+      - super PAC
+      - PAC
+      - fundraising
+      - campaign
+      - candidate
+      - primary
+      - election
+      - elections
+      - poll
+      - polls
+      - polling
+      - 2028
+      - midterms
+      - midterm
+      - Senate race
+      - governor
+      - mayoral
+      - media rights
+      - broadcast rights
+      - streaming rights
+      - franchise
+      - stadium
+      - team owner
+      - ownership stake
+      - valuation
+      - sports betting
+      - think tank
+      - report finds
+      - report says
+      - new report
+      - survey
+      - focus group
+      - op-ed
+      - opinion
+      - editorial
+      - interview
+      - press conference
+      - statement
+      - said on
+      - told
+      - speech
+      - remarks
+      - testimony
+      - hearing
+      - executive order
+      - memo
+      - leaked
+      - exclusive
+      - scoop
+      - investigation
+      - revealed
+
+# ── Noise vetoes ────────────────────────────────────────────────────────────
+# Dropped regardless of score, matched against the headline only. Sport results and
+# service journalism from the general feeds; nothing here is something the desk has
+# ever pushed. Military vocabulary is NOT vetoed on this beat.
+noise:
+  - prayer times
+  - gold rate
+  - gold rates
+  - horoscope
+  - weather warning
+  - temperatures
+  - traffic accident
+  - road accident
+  - back-to-school
+  - raffle
+  - lottery
+  - recipe
+  - restaurant review
+  - things to do
+  - match preview
+  - transfer window
+  - live score
+  - full-time
+  - box office
+  - Bollywood
+  - trailer out
+  - influencer
+  - fashion week
+  - public holiday
+  - parking
+  - prediction
+  - predictions
+  - head-to-head
+  - booking code
+  - victory over
+  - defeat to
+  - draw with
+  - bet on
+  - betting odds
+  - odds
+  - " vs "
+  - line-up
+  - lineup
+  - fixture
+  - fixtures
+  - fantasy football
+  # club football and other sport that shares words with the beat (Torres, strike, edge)
+  - hat-trick
+  - hat trick
+  - Real Madrid
+  - Saint-Germain
+  - PSG
+  - Barcelona
+  - Bayern
+  - Liverpool FC
+  - Arsenal
+  - Chelsea
+  - Manchester United
+  - Manchester City
+  - Juventus
+  - Inter Milan
+  - AC Milan
+  - Atletico
+  - Bratislava
+  - EuroLeague
+  - Champions League
+  - Europa League
+  - La Liga
+  - Serie A
+  - Bundesliga
+  - Ligue 1
+  - dominant win
+  - late winner
+  - penalty shootout
+  - vaccine
+  - spaceport
+  - fantasy
+  - injury report
+  - injury update
+  - depth chart
+  - power rankings
+  - game preview
+  - game recap
+  - highlights
+  - box score
+  - final score
+  - touchdown
+  - touchdowns
+  - interception
+  - quarterback rating
+  - trade rumors
+  - trade rumours
+  - waiver
+  - live football
+  - watch live
+  - full match
+  - streaming live
+  - how to watch
+  - where to watch
+  - now hiring
+  - apply now
+  - what we know
+  - things to know
+  - what to know
+  - Miss Universe
+  - crowned
+  - celebrity
+  - red carpet
+  - Kardashian
+  - Taylor Swift
+  - review:
+  - best deals
+  - deal of the day
+  - Prime Day
+  - Black Friday
+  - sale on
+  - discount
+  - coupon
+  - crossword
+  - puzzle
+  - Wordle
+  - recipe
+  - dies at
+  - obituary
+  # search-engine spam that rides entity queries
+  - Customer Ratings
+  - Official-Site
+  - Official Site
+  - Reviews and
+  - Ingredients
+  - Side Effects
+  - Where to Buy
+
+# ── Digest sections ─────────────────────────────────────────────────────────
+# Checked in order; first match wins; anything else is israel_mideast (default above).
+# Labels live in src/digest.py.
+categories:
+  defense_cyber:
+    [defense tech, defence tech, Anduril, Palantir, Saronic, Shield AI, Helsing, Elbit,
+     Rafael, Israel Aerospace, IAI, Pentagon contract, procurement, drone, drones,
+     autonomous weapons, hypersonic, missile defense, Iron Dome, cyberattack, cyber attack,
+     cybersecurity, ransomware, hackers, hacked, espionage, spyware, NSO, Paragon,
+     influence operation, disinformation, election interference, Unit 8200, Cyber Command,
+     CISA, Lockheed, Raytheon, RTX, Northrop, General Dynamics, L3Harris, arms sale,
+     arms deal, F-35, F-15, future of warfare, AI in warfare]
+  sports_business:
+    [NFL, Patriots, Kraft, Goodell, Revolution, MLS, NBA, FIFA, UEFA, LIV Golf, PGA Tour,
+     Formula 1, F1, media rights, broadcast rights, streaming rights, franchise, stadium,
+     team owner, ownership stake, sports betting, Sportico, Gillette Stadium, Super Bowl,
+     World Cup, Olympics, ESPN]
+  gulf_capital:
+    [PIF, Public Investment Fund, Mubadala, ADIA, ADQ, QIA, Qatar Investment Authority,
+     MGX, G42, HUMAIN, IHC, Lunate, Sanabil, NEOM, Aramco, ADNOC, QatarEnergy, Masdar,
+     DP World, sovereign wealth, sovereign fund, Al-Rumayyan, Rumayyan, Tahnoun, AMKM,
+     Al Maktoum, Turki Al-Sheikh, Emirates, Etihad, Qatar Airways, Syrian Investment Authority]
+  private_capital:
+    [Blackstone, Apollo, KKR, Carlyle, Ares, Brookfield, Blue Owl, private credit,
+     private equity, alternative assets, 401(k), retirement, SEC, Treasury, Federal Reserve,
+     antitrust, data center, data centers, data centre, hyperscaler, CoreWeave, Equinix,
+     QTS, Digital Realty, grid, transmission, power plant, Invenergy, Champlain Hudson,
+     Schwarzman, Jonathan Gray, Marc Rowan, Rowan, Leon Black, Nides, Dimon, Fink,
+     Goldman Sachs, JPMorgan, Morgan Stanley, BlackRock, IPO, buyout, valuation]
+  us_politics:
+    [Congress, Senate, House, Senate race, primary, 2028, midterms, midterm, campaign,
+     candidate, election, poll, polls, polling, donor, donors, super PAC, PAC, AIPAC,
+     J Street, ADL, Anti-Defamation League, antisemitism, antisemitic, Jewish, Jews,
+     synagogue, campus, Title VI, Democrats, Republicans, Democratic, Republican, GOP,
+     DNC, RNC, Schumer, Jeffries, Johnson, Thune, Ocasio-Cortez, AOC, Omar, Tlaib,
+     Sanders, Fetterman, Newsom, Shapiro, Whitmer, Pritzker, Buttigieg, Harris, Booker,
+     Ossoff, El-Sayed, Mike Rogers, Mamdani, Cuomo, Hochul, Michigan, governor, mayoral,
+     Supreme Court, executive order, White House, Vance, Rubio, Hegseth, Witkoff, Kushner]
+  israel_mideast:
+    [Israel, Gaza, West Bank, Lebanon, Syria, Iran, Iraq, Yemen, Houthi, Hezbollah, Hamas,
+     Netanyahu, IDF, Gulf, Saudi, UAE, Qatar, Egypt, Jordan, Turkey, Red Sea, Hormuz]
+
+# ── Byline bypass ───────────────────────────────────────────────────────────
+byline_bypass: []
