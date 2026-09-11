@@ -106,7 +106,6 @@ function setup() {
   ScriptApp.newTrigger('pingNewswire').timeBased().everyMinutes(EVERY_MINUTES).create();
 
 
-  console.log('Triggers installed: newswire every ' + EVERY_MINUTES +
-              ' minutes; briefings at 6am, 12pm and 6pm Eastern.');
+  console.log('Trigger installed: newswire every ' + EVERY_MINUTES + ' minutes.');
   pingNewswire();
 }
