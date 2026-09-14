@@ -74,6 +74,8 @@ class Item:
     effective_date: datetime | None = None
     score: int = 0
     axes: list[str] = field(default_factory=list)
+    # client lanes (src/lanes.py): short names printed under the line, "↳ Dean · Alex"
+    lanes: list[str] = field(default_factory=list)
 
 
 # ----------------------------------------------------------------- text helpers

@@ -53,6 +53,10 @@ jobs:
       - run: python poll.py
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          # client lanes: read-only client map from the Intel121 app + one model call
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          INTEL121_MAP_URL: ${{ secrets.INTEL121_MAP_URL }}
+          INTEL121_MAP_KEY: ${{ secrets.INTEL121_MAP_KEY }}
 
       # Runs on failure too: status.json is most useful precisely when the run broke,
       # and it is the only thing that will explain why after the fact.

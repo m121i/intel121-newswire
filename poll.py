@@ -47,6 +47,7 @@ from src import dedup, digest, postlog, state, status
 from src.fetch import Item, ParseFailure, fetch_all, now_utc
 from src.score import Scorer
 from src.slack_client import DeliveryError, SlackClient
+from src import lanes
 
 load_dotenv()
 
@@ -284,6 +285,12 @@ def run(args) -> int:
         print("Nothing to post.")
         _housekeeping(run_status, slack, live_state, args)
         return 0
+
+    # ---- client lanes: names on the line, reasons on request ---------------
+    # Never blocks delivery: any failure is a digest without tails.
+    n_lanes = lanes.assign(unique)
+    if n_lanes:
+        print(f"  lanes: {n_lanes} of {len(unique)} item(s) matched a client")
 
     text, included = digest.build(unique, now, max_items)
     run_status.gate("posted", len(included))

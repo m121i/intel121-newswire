@@ -127,6 +127,10 @@ def format_line(item: Item, now: datetime) -> str:
     preview = preview_for(item)
     if preview:
         line += f"\n_{escape(preview)}_"
+    # client lanes: names only; the reasons live in the thread ("why")
+    lanes = getattr(item, "lanes", None) or []
+    if lanes:
+        line += "\n↳ " + " · ".join(escape(n) for n in lanes)
     return line
 
 

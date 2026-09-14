@@ -46,6 +46,16 @@ polled this way; they stay a human job.
 python poll.py --audit          # every source: alive, fresh, parseable — run monthly
 ```
 
+## Client lanes
+
+Each line can end with `↳ Dean · Alex`: the clients the story is likely for, names
+only. One model call per digest, reading the Intel121 app's client map (instructions,
+follows, watchlist, team notes) over a read-only endpoint. Reply **why** (or a client's
+first name) under a digest and the 121 app explains in the thread; reply a correction
+("not Alex, this is Rami") and it writes into the client's dossier, which the wire reads
+on its next tick. Lanes never block delivery: if the map or the model is unavailable,
+the digest posts without tails.
+
 ## Operating it
 
 ```bash

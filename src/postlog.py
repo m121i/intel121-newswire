@@ -78,6 +78,7 @@ def record(entries: list[dict], items: list, words_for) -> None:
             "paywall": bool(item.paywall),
             "published": item.published.isoformat(timespec="seconds") if item.published else None,
             "words": words_for(item.title),
+            "lanes": list(getattr(item, "lanes", []) or []),
             "corroboration": 0,
         })
 
