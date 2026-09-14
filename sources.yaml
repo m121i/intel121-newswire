@@ -738,12 +738,16 @@ sources:
     threshold: 5
 
   # ── Individual writers the owner reads ──
+  # Substack answers 403 to GitHub's runners (fine from a laptop, 2026-09-14);
+  # Google News indexes the posts instead.
   - key: maxraskin
     outlet: Max Raskin
     desk: Substack
-    method: rss
-    url: "https://maxraskin.substack.com/feed"
+    method: gnews
+    url: maxraskin.substack.com
+    publisher: [Max Raskin, maxraskin.substack.com, Substack]
     threshold: 3
+
 
   - key: friedman
     outlet: NYT
@@ -812,9 +816,11 @@ sources:
   - key: danielmael
     outlet: Daniel Mael
     desk: Substack
-    method: rss
-    url: "https://danielmael.substack.com/feed"
+    method: gnews
+    url: danielmael.substack.com
+    publisher: [Daniel Mael, danielmael.substack.com, Substack]
     threshold: 3
+
 
   - key: wapo_world
     outlet: WaPo
