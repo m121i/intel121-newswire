@@ -36,8 +36,9 @@ MAX_PER_SOURCE = 4
 
 # Order the digest reads in. Categories travel with each line rather than heading a
 # block, so the groups still read together without emoji headers.
-CATEGORY_ORDER = ["israel_mideast", "us_politics", "gulf_capital", "defense_cyber", "private_capital", "sports_business"]
+CATEGORY_ORDER = ["israel_mideast", "us_politics", "gulf_capital", "defense_cyber", "private_capital", "sports_business", "world"]
 CATEGORY_LABELS = {
+    "world": "World",
     "israel_mideast": "Israel/Mideast",
     "us_politics": "US Politics",
     "gulf_capital": "Gulf Capital",

@@ -66,7 +66,7 @@ class Item:
     body: str = ""
     author: str = ""
     desk: str | None = None
-    category: str = "israel_mideast"
+    category: str = "world"
     method: str = ""
     paywall: bool = False
     threshold: int | None = None
@@ -373,7 +373,7 @@ def _mk(source: dict, title: str, url: str, published: datetime | None,
         body=body,
         author=author,
         desk=source.get("desk"),
-        category=source.get("category", "israel_mideast"),
+        category=source.get("category", "world"),
         method=source["method"],
         paywall=bool(source.get("paywall")),
         threshold=source.get("threshold"),
