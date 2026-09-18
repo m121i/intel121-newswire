@@ -1,27 +1,28 @@
 {
-  "started_at": "2026-09-18T00:46:05+00:00",
-  "finished_at": "2026-09-18T00:49:07+00:00",
-  "duration_seconds": 182.1,
+  "started_at": "2026-09-18T00:51:09+00:00",
+  "finished_at": "2026-09-18T00:51:24+00:00",
+  "duration_seconds": 15.0,
   "dispatch_interval_seconds": 900,
   "items": {
-    "fetched": 12,
-    "fresh": 12,
-    "relevant": 7,
-    "unseen": 2,
-    "unique": 1,
-    "posted": 1
+    "fetched": 14,
+    "fresh": 14,
+    "relevant": 6,
+    "unseen": 1,
+    "unique": 0
   },
-  "posted": 1,
-  "delivered": true,
+  "posted": 0,
+  "delivered": null,
   "last_posted_at": "2026-09-18T00:49:07+00:00",
   "sources": {
     "wsj": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:wsj.com%20(Israel%20OR%20Iran%20OR%20Gaza%20OR%20Gulf%20OR%20Saudi%20OR%20UAE%20OR%20Qatar%20OR%20Pentagon%20OR%20defense%20OR%20Congress%20OR%20Senate%20OR%20Blackstone%20OR%20Apollo%20OR%20\"private%20credit\"%20OR%20\"data%20center\")"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 100
     },
     "bloomberg": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:bloomberg.com%20(Israel%20OR%20Iran%20OR%20Gaza%20OR%20Gulf%20OR%20Saudi%20OR%20UAE%20OR%20Qatar%20OR%20Pentagon%20OR%20defense%20OR%20Congress%20OR%20Blackstone%20OR%20Apollo%20OR%20\"private%20credit\"%20OR%20\"data%20center\"%20OR%20s"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 100
     },
     "nyt_world": {
       "status": "ok",
@@ -39,8 +40,9 @@
       "in_window": 30
     },
     "apnews": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:apnews.com%20(Israel%20OR%20Iran%20OR%20Gaza%20OR%20Lebanon%20OR%20Syria%20OR%20Gulf%20OR%20Saudi%20OR%20Pentagon%20OR%20Congress%20OR%20Senate%20OR%20antisemitism)%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 100
     },
     "ft_world": {
       "status": "ok",
@@ -53,16 +55,18 @@
       "in_window": 25
     },
     "reuters": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:reuters.com%20(Israel%20OR%20Iran%20OR%20Gaza%20OR%20Lebanon%20OR%20Syria%20OR%20Gulf%20OR%20Saudi%20OR%20UAE%20OR%20Qatar%20OR%20Pentagon%20OR%20Congress%20OR%20sanctions)%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 100
     },
     "semafor": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:semafor.com%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 31
     },
     "axios": {
       "status": "ok",
-      "fetched": 1,
+      "fetched": 0,
       "in_window": 100
     },
     "politico": {
@@ -77,7 +81,7 @@
     },
     "thehill": {
       "status": "ok",
-      "fetched": 0,
+      "fetched": 1,
       "in_window": 100
     },
     "theatlantic": {
@@ -111,25 +115,29 @@
       "in_window": 25
     },
     "puck": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:puck.news%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 13
     },
     "economist": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:economist.com%20(Israel%20OR%20Iran%20OR%20Gulf%20OR%20Saudi%20OR%20Pentagon%20OR%20Congress)%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 1,
+      "in_window": 23
     },
     "timesofisrael": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:timesofisrael.com%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 100
     },
     "jpost": {
       "status": "ok",
-      "fetched": 6,
+      "fetched": 5,
       "in_window": 26
     },
     "haaretz": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:haaretz.com%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 47
     },
     "israelhayom": {
       "status": "ok",
@@ -142,12 +150,14 @@
       "in_window": 30
     },
     "calcalist": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:calcalistech.com%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 15
     },
     "globes": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:en.globes.co.il%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 2
     },
     "jta": {
       "status": "ok",
@@ -170,16 +180,19 @@
       "in_window": 10
     },
     "forbesme": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:forbesmiddleeast.com%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 4
     },
     "gulfnews": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:gulfnews.com%20(business%20OR%20investment%20OR%20Israel%20OR%20Iran%20OR%20sovereign)%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 100
     },
     "zawya": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:zawya.com%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 100
     },
     "aljazeera": {
       "status": "ok",
@@ -187,20 +200,24 @@
       "in_window": 25
     },
     "almonitor": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:al-monitor.com%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 69
     },
     "amwaj": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:amwaj.media%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 3
     },
     "meed": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:meed.com%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 2
     },
     "tasnim": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:tasnimnews.com%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 0
     },
     "irna": {
       "status": "ok",
@@ -208,8 +225,9 @@
       "in_window": 30
     },
     "sana": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:sana.sy%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 18
     },
     "warontherocks": {
       "status": "ok",
@@ -217,8 +235,9 @@
       "in_window": 100
     },
     "intelligenceonline": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:intelligenceonline.com%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 8
     },
     "responsiblestatecraft": {
       "status": "ok",
@@ -231,16 +250,19 @@
       "in_window": 25
     },
     "foreignaffairs": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:foreignaffairs.com%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 4
     },
     "csis": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:csis.org%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 41
     },
     "fdd": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:fdd.org%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 11
     },
     "breakingdefense": {
       "status": "ok",
@@ -283,8 +305,9 @@
       "in_window": 50
     },
     "espn_nfl": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:espn.com%20NFL%20(owners%20OR%20league%20OR%20Patriots%20OR%20Goodell%20OR%20Kraft%20OR%20rights%20OR%20stadium)%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 100
     },
     "whitehouse": {
       "status": "ok",
@@ -297,8 +320,9 @@
       "in_window": 10
     },
     "treasury": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:home.treasury.gov%20(sanctions%20OR%20OFAC%20OR%20designates%20OR%20designation)%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 2
     },
     "sec": {
       "status": "ok",
@@ -306,52 +330,64 @@
       "in_window": 25
     },
     "centcom": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:centcom.mil%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 0
     },
     "pmo_israel": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:gov.il%20\"Prime%20Minister\"%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 2
     },
     "q_principals_us": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=(Witkoff%20OR%20Kushner%20OR%20Rubio%20OR%20Hegseth%20OR%20Vance%20OR%20CENTCOM)%20(Israel%20OR%20Iran%20OR%20Gaza%20OR%20Gulf%20OR%20Saudi%20OR%20Qatar%20OR%20Lebanon%20OR%20Syria)%20-site:circuit.news%20-\"live%20stream\"%20-livestream%20"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 100
     },
     "q_israel_leaders": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=(Netanyahu%20OR%20Herzog%20OR%20Lapid%20OR%20Bennett%20OR%20Gantz%20OR%20Eisenkot%20OR%20\"Ben-Gvir\"%20OR%20Smotrich%20OR%20\"Yair%20Golan\")%20-site:circuit.news%20-\"live%20stream\"%20-livestream%20-streaming%20-\"watch%20live\"%20-\"free%20str"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 100
     },
     "q_gulf_capital": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=(\"Public%20Investment%20Fund\"%20OR%20PIF%20OR%20Mubadala%20OR%20ADIA%20OR%20ADQ%20OR%20\"Qatar%20Investment%20Authority\"%20OR%20MGX%20OR%20HUMAIN%20OR%20\"Al-Rumayyan\"%20OR%20Tahnoun)%20-site:circuit.news%20-\"live%20stream\"%20-livestream%20"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 100
     },
     "q_defense_tech": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=(Anduril%20OR%20Palantir%20OR%20Saronic%20OR%20Shield%20AI%20OR%20Helsing%20OR%20Elbit%20OR%20Rafael%20OR%20\"Israel%20Aerospace\"%20OR%20\"defense%20tech\"%20OR%20\"defence%20tech\")%20-site:circuit.news%20-\"live%20stream\"%20-livestream%20-str"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 100
     },
     "q_private_capital": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=(Blackstone%20OR%20\"Apollo%20Global\"%20OR%20KKR%20OR%20Carlyle%20OR%20\"private%20credit\"%20OR%20Schwarzman%20OR%20\"Marc%20Rowan\"%20OR%20\"Jonathan%20Gray\")%20-site:x.com%20-site:instagram.com%20-site:amazonaws.com%20-site:youtube.com%20-si"
+      "status": "ok",
+      "fetched": 1,
+      "in_window": 100
     },
     "q_jewish_politics": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=(AIPAC%20OR%20\"J%20Street\"%20OR%20antisemitism%20OR%20\"anti-Israel\"%20OR%20\"pro-Israel\")%20(Senate%20OR%20Congress%20OR%20primary%20OR%202028%20OR%20campaign%20OR%20candidate)%20-site:circuit.news%20-\"live%20stream\"%20-livestream%20-strea"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 100
     },
     "q_michigan": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=(\"El-Sayed\"%20OR%20\"Mike%20Rogers\")%20Michigan%20Senate%20-site:circuit.news%20-\"live%20stream\"%20-livestream%20-streaming%20-\"watch%20live\"%20-\"free%20stream\"%20-soccer%20-\"match%20preview\"%20-\"full%20match\"%20-highlights%20-\"tv%20channe"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 100
     },
     "q_kraft_nfl": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=(\"Robert%20Kraft\"%20OR%20\"Kraft%20Group\"%20OR%20Patriots%20OR%20Goodell%20OR%20\"NFL%20owners\"%20OR%20\"media%20rights\"%20NFL)%20-site:x.com%20-site:instagram.com%20-site:youtube.com%20-site:circuit.news%20-\"live%20stream\"%20-livestream%20-"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 100
     },
     "q_syria": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=(\"al-Sharaa\"%20OR%20\"Syrian%20Investment%20Authority\"%20OR%20\"Syria%20reconstruction\"%20OR%20\"Syria%20sanctions\")%20-site:circuit.news%20-\"live%20stream\"%20-livestream%20-streaming%20-\"watch%20live\"%20-\"free%20stream\"%20-soccer%20-\"match%"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 100
     },
     "q_abraham_accords": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=(\"Abraham%20Accords\"%20OR%20normalization%20Israel%20Saudi%20OR%20\"Saudi-Israel\")%20-site:circuit.news%20-\"live%20stream\"%20-livestream%20-streaming%20-\"watch%20live\"%20-\"free%20stream\"%20-soccer%20-\"match%20preview\"%20-\"full%20match\"%20-"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 100
     },
     "newlines": {
       "status": "ok",
@@ -359,8 +395,9 @@
       "in_window": 20
     },
     "arabnews": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:arabnews.com%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 100
     },
     "japantimes": {
       "status": "ok",
@@ -373,24 +410,29 @@
       "in_window": 10
     },
     "thebanner": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:thebanner.com%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 32
     },
     "telegraph": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:telegraph.co.uk%20(Israel%20OR%20Iran%20OR%20Gulf%20OR%20Saudi%20OR%20Pentagon%20OR%20Washington%20OR%20Trump)%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 100
     },
     "africaintelligence": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:africaintelligence.com%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 11
     },
     "glitz": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:glitz.paris%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 1
     },
     "lalettre": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:lalettre.fr%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 0
     },
     "wired": {
       "status": "ok",
@@ -403,16 +445,19 @@
       "in_window": 10
     },
     "nymag": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:nymag.com%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 17
     },
     "punchbowl": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:punchbowl.news%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 20
     },
     "airmail": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:airmail.news%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 13
     },
     "vanityfair": {
       "status": "ok",
@@ -420,45 +465,54 @@
       "in_window": 30
     },
     "thetimes": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:thetimes.com%20(Israel%20OR%20Iran%20OR%20Gulf%20OR%20Saudi%20OR%20Pentagon%20OR%20Washington%20OR%20Trump)%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 100
     },
     "cnn": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:cnn.com%20(Israel%20OR%20Iran%20OR%20Gaza%20OR%20Gulf%20OR%20Saudi%20OR%20Pentagon%20OR%20Congress%20OR%20Senate%20OR%20Trump)%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 1,
+      "in_window": 100
     },
     "cbsnews": {
       "status": "ok",
-      "fetched": 4,
+      "fetched": 2,
       "in_window": 30
     },
     "maxraskin": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:maxraskin.substack.com%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 0
     },
     "friedman": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:nytimes.com%20\"Thomas%20L.%20Friedman\"%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 1,
+      "in_window": 100
     },
     "ignatius": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:washingtonpost.com%20\"David%20Ignatius\"%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 1
     },
     "stephens": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:nytimes.com%20\"Bret%20Stephens\"%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 1,
+      "in_window": 100
     },
     "rosenberg": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:nytimes.com%20\"Yair%20Rosenberg\"%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 0
     },
     "schleifer": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:nytimes.com%20\"Theodore%20Schleifer\"%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 13
     },
     "danielmael": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:danielmael.substack.com%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 1
     },
     "wapo_world": {
       "status": "ok",
@@ -466,16 +520,19 @@
       "in_window": 7
     },
     "theathletic": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:nytimes.com%2Fathletic%20(NFL%20OR%20Patriots%20OR%20owners%20OR%20Goodell%20OR%20Kraft%20OR%20\"media%20rights\"%20OR%20stadium%20OR%20Revolution%20OR%20MLS)%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 100
     },
     "texasmonthly": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:texasmonthly.com%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 4
     },
     "colossus": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://news.google.com/rss/search?q=site:colossus.com%20when:1d&hl=en-US&gl=US&ceid=US:en"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 1
     },
     "callmeback": {
       "status": "ok",
@@ -484,111 +541,111 @@
     }
   },
   "consecutive_empty": {
-    "wsj": 4,
-    "bloomberg": 15,
-    "nyt_world": 24,
-    "nyt_politics": 1,
-    "cnbc": 8,
-    "apnews": 48,
-    "ft_world": 28,
-    "ft_mideast": 28,
-    "reuters": 61,
-    "semafor": 43,
-    "axios": 0,
-    "politico": 51,
-    "politico_eu": 41,
-    "thehill": 7,
-    "theatlantic": 14,
-    "theinformation": 8,
-    "thefp": 40,
-    "freebeacon": 25,
-    "wapo_politics": 25,
-    "foxnews_politics": 13,
-    "puck": 15,
-    "economist": 55,
-    "timesofisrael": 43,
+    "wsj": 5,
+    "bloomberg": 16,
+    "nyt_world": 25,
+    "nyt_politics": 2,
+    "cnbc": 9,
+    "apnews": 49,
+    "ft_world": 29,
+    "ft_mideast": 29,
+    "reuters": 62,
+    "semafor": 44,
+    "axios": 1,
+    "politico": 52,
+    "politico_eu": 42,
+    "thehill": 0,
+    "theatlantic": 15,
+    "theinformation": 9,
+    "thefp": 41,
+    "freebeacon": 26,
+    "wapo_politics": 26,
+    "foxnews_politics": 14,
+    "puck": 16,
+    "economist": 0,
+    "timesofisrael": 44,
     "jpost": 0,
-    "haaretz": 22,
-    "israelhayom": 45,
-    "ynet": 1,
-    "calcalist": 83,
-    "globes": 106,
-    "jta": 25,
-    "thenational": 85,
+    "haaretz": 23,
+    "israelhayom": 46,
+    "ynet": 2,
+    "calcalist": 84,
+    "globes": 107,
+    "jta": 26,
+    "thenational": 86,
     "middleeasteye": 0,
-    "agbi": 152,
-    "forbesme": 215,
-    "gulfnews": 1,
-    "zawya": 76,
-    "aljazeera": 48,
-    "almonitor": 44,
-    "amwaj": 21,
-    "meed": 194,
-    "tasnim": 1891,
-    "irna": 79,
-    "sana": 164,
-    "warontherocks": 80,
-    "intelligenceonline": 251,
-    "responsiblestatecraft": 133,
-    "foreignpolicy": 52,
-    "foreignaffairs": 427,
-    "csis": 122,
-    "fdd": 1,
-    "breakingdefense": 29,
-    "defensenews": 52,
-    "therecord": 51,
-    "cyberscoop": 45,
-    "dcd": 107,
-    "techcrunch": 7,
-    "sportico": 60,
-    "fos": 47,
-    "espn_nfl": 64,
-    "whitehouse": 110,
-    "statedept": 302,
-    "treasury": 712,
-    "sec": 424,
-    "centcom": 696,
-    "pmo_israel": 507,
-    "q_principals_us": 258,
-    "q_israel_leaders": 75,
-    "q_gulf_capital": 165,
-    "q_defense_tech": 179,
-    "q_private_capital": 41,
-    "q_jewish_politics": 1278,
-    "q_michigan": 37,
-    "q_kraft_nfl": 272,
-    "q_syria": 729,
-    "q_abraham_accords": 50,
-    "newlines": 53,
-    "arabnews": 249,
-    "japantimes": 1,
-    "sfstandard": 38,
-    "thebanner": 9,
-    "telegraph": 6,
-    "africaintelligence": 244,
-    "glitz": 1883,
-    "lalettre": 1883,
-    "wired": 29,
-    "techreview": 153,
-    "nymag": 22,
-    "punchbowl": 36,
-    "airmail": 1709,
-    "vanityfair": 17,
-    "thetimes": 22,
-    "cnn": 12,
+    "agbi": 153,
+    "forbesme": 216,
+    "gulfnews": 2,
+    "zawya": 77,
+    "aljazeera": 49,
+    "almonitor": 45,
+    "amwaj": 22,
+    "meed": 195,
+    "tasnim": 1892,
+    "irna": 80,
+    "sana": 165,
+    "warontherocks": 81,
+    "intelligenceonline": 252,
+    "responsiblestatecraft": 134,
+    "foreignpolicy": 53,
+    "foreignaffairs": 428,
+    "csis": 123,
+    "fdd": 2,
+    "breakingdefense": 30,
+    "defensenews": 53,
+    "therecord": 52,
+    "cyberscoop": 46,
+    "dcd": 108,
+    "techcrunch": 8,
+    "sportico": 61,
+    "fos": 48,
+    "espn_nfl": 65,
+    "whitehouse": 111,
+    "statedept": 303,
+    "treasury": 713,
+    "sec": 425,
+    "centcom": 697,
+    "pmo_israel": 508,
+    "q_principals_us": 259,
+    "q_israel_leaders": 76,
+    "q_gulf_capital": 166,
+    "q_defense_tech": 180,
+    "q_private_capital": 0,
+    "q_jewish_politics": 1279,
+    "q_michigan": 38,
+    "q_kraft_nfl": 273,
+    "q_syria": 730,
+    "q_abraham_accords": 51,
+    "newlines": 54,
+    "arabnews": 250,
+    "japantimes": 2,
+    "sfstandard": 39,
+    "thebanner": 10,
+    "telegraph": 7,
+    "africaintelligence": 245,
+    "glitz": 1884,
+    "lalettre": 1884,
+    "wired": 30,
+    "techreview": 154,
+    "nymag": 23,
+    "punchbowl": 37,
+    "airmail": 1710,
+    "vanityfair": 18,
+    "thetimes": 23,
+    "cnn": 0,
     "cbsnews": 0,
-    "maxraskin": 1883,
-    "friedman": 19,
-    "ignatius": 12,
-    "stephens": 19,
-    "rosenberg": 1880,
-    "schleifer": 190,
-    "danielmael": 1880,
-    "wapo_world": 91,
-    "theathletic": 61,
-    "texasmonthly": 107,
-    "colossus": 1880,
-    "callmeback": 157
+    "maxraskin": 1884,
+    "friedman": 0,
+    "ignatius": 13,
+    "stephens": 0,
+    "rosenberg": 1881,
+    "schleifer": 191,
+    "danielmael": 1881,
+    "wapo_world": 92,
+    "theathletic": 62,
+    "texasmonthly": 108,
+    "colossus": 1881,
+    "callmeback": 158
   },
   "consecutive_parse_fail": {
     "wsj": 0,
