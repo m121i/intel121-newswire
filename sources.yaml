@@ -273,11 +273,16 @@ sources:
     url: "https://www.middleeasteye.net/rss"
     threshold: 4
 
+  # The native feed sits behind a human-verification wall (405 from runners and from
+  # a laptop alike, Oct 12); Google News indexes AGBI within minutes, so read it there.
   - key: agbi
     outlet: AGBI
-    method: rss
-    url: "https://www.agbi.com/feed/"
+    desk: Gulf
+    method: gnews
+    url: agbi.com
+    publisher: [AGBI, Arabian Gulf Business Insight, "Arabian Gulf Business Insight | AGBI", agbi.com]
     threshold: 4
+
 
   - key: forbesme
     outlet: Forbes Middle East
