@@ -1,18 +1,17 @@
 {
-  "started_at": "2026-10-16T16:56:08+00:00",
-  "finished_at": "2026-10-16T16:56:49+00:00",
-  "duration_seconds": 41.3,
+  "started_at": "2026-10-16T17:01:09+00:00",
+  "finished_at": "2026-10-16T17:01:46+00:00",
+  "duration_seconds": 36.9,
   "dispatch_interval_seconds": 900,
   "items": {
-    "fetched": 12,
-    "fresh": 12,
-    "relevant": 7,
-    "unseen": 1,
-    "unique": 1,
-    "posted": 1
+    "fetched": 8,
+    "fresh": 8,
+    "relevant": 3,
+    "unseen": 0,
+    "unique": 0
   },
-  "posted": 1,
-  "delivered": true,
+  "posted": 0,
+  "delivered": null,
   "last_posted_at": "2026-10-16T16:56:49+00:00",
   "sources": {
     "wsj": {
@@ -37,7 +36,7 @@
     },
     "cnbc": {
       "status": "ok",
-      "fetched": 2,
+      "fetched": 1,
       "in_window": 30
     },
     "apnews": {
@@ -63,7 +62,7 @@
     "semafor": {
       "status": "ok",
       "fetched": 0,
-      "in_window": 50
+      "in_window": 47
     },
     "axios": {
       "status": "ok",
@@ -82,7 +81,7 @@
     },
     "thehill": {
       "status": "ok",
-      "fetched": 1,
+      "fetched": 0,
       "in_window": 100
     },
     "theatlantic": {
@@ -137,12 +136,11 @@
     "haaretz": {
       "status": "ok",
       "fetched": 0,
-      "in_window": 42
+      "in_window": 43
     },
     "israelhayom": {
-      "status": "ok",
-      "fetched": 0,
-      "in_window": 10
+      "status": "error",
+      "detail": "HTTPError: 403 Client Error: Forbidden for url: https://www.israelhayom.com/feed/"
     },
     "ynet": {
       "status": "ok",
@@ -186,13 +184,13 @@
     },
     "gulfnews": {
       "status": "ok",
-      "fetched": 1,
+      "fetched": 0,
       "in_window": 100
     },
     "zawya": {
       "status": "ok",
-      "fetched": 1,
-      "in_window": 89
+      "fetched": 0,
+      "in_window": 90
     },
     "aljazeera": {
       "status": "ok",
@@ -202,7 +200,7 @@
     "almonitor": {
       "status": "ok",
       "fetched": 0,
-      "in_window": 61
+      "in_window": 60
     },
     "amwaj": {
       "status": "ok",
@@ -212,7 +210,7 @@
     "meed": {
       "status": "ok",
       "fetched": 0,
-      "in_window": 1
+      "in_window": 2
     },
     "tasnim": {
       "status": "ok",
@@ -237,7 +235,7 @@
     "intelligenceonline": {
       "status": "ok",
       "fetched": 0,
-      "in_window": 7
+      "in_window": 8
     },
     "responsiblestatecraft": {
       "status": "ok",
@@ -301,7 +299,7 @@
     },
     "fos": {
       "status": "ok",
-      "fetched": 1,
+      "fetched": 0,
       "in_window": 50
     },
     "espn_nfl": {
@@ -322,7 +320,7 @@
     "treasury": {
       "status": "ok",
       "fetched": 0,
-      "in_window": 6
+      "in_window": 4
     },
     "sec": {
       "status": "ok",
@@ -397,7 +395,7 @@
     "arabnews": {
       "status": "ok",
       "fetched": 0,
-      "in_window": 100
+      "in_window": 0
     },
     "japantimes": {
       "status": "ok",
@@ -406,7 +404,7 @@
     },
     "sfstandard": {
       "status": "ok",
-      "fetched": 0,
+      "fetched": 1,
       "in_window": 10
     },
     "thebanner": {
@@ -457,7 +455,7 @@
     "airmail": {
       "status": "ok",
       "fetched": 0,
-      "in_window": 24
+      "in_window": 23
     },
     "vanityfair": {
       "status": "ok",
@@ -466,7 +464,7 @@
     },
     "thetimes": {
       "status": "ok",
-      "fetched": 0,
+      "fetched": 1,
       "in_window": 100
     },
     "cnn": {
@@ -476,7 +474,7 @@
     },
     "cbsnews": {
       "status": "ok",
-      "fetched": 1,
+      "fetched": 0,
       "in_window": 30
     },
     "maxraskin": {
@@ -492,7 +490,7 @@
     "ignatius": {
       "status": "ok",
       "fetched": 0,
-      "in_window": 24
+      "in_window": 21
     },
     "stephens": {
       "status": "ok",
@@ -507,7 +505,7 @@
     "schleifer": {
       "status": "ok",
       "fetched": 0,
-      "in_window": 15
+      "in_window": 18
     },
     "danielmael": {
       "status": "ok",
@@ -540,111 +538,111 @@
     }
   },
   "consecutive_empty": {
-    "wsj": 20,
-    "bloomberg": 46,
-    "nyt_world": 4,
-    "nyt_politics": 3,
+    "wsj": 21,
+    "bloomberg": 47,
+    "nyt_world": 5,
+    "nyt_politics": 4,
     "cnbc": 0,
-    "apnews": 46,
+    "apnews": 47,
     "ft_world": 0,
-    "ft_mideast": 37,
-    "reuters": 9,
-    "semafor": 3,
-    "axios": 88,
-    "politico": 83,
-    "politico_eu": 4,
-    "thehill": 0,
-    "theatlantic": 29,
-    "theinformation": 10,
-    "thefp": 10,
-    "freebeacon": 1,
-    "wapo_politics": 647,
-    "foxnews_politics": 7,
-    "puck": 34,
-    "economist": 3,
-    "timesofisrael": 8,
+    "ft_mideast": 38,
+    "reuters": 10,
+    "semafor": 4,
+    "axios": 89,
+    "politico": 84,
+    "politico_eu": 5,
+    "thehill": 1,
+    "theatlantic": 30,
+    "theinformation": 11,
+    "thefp": 11,
+    "freebeacon": 2,
+    "wapo_politics": 648,
+    "foxnews_politics": 8,
+    "puck": 35,
+    "economist": 4,
+    "timesofisrael": 9,
     "jpost": 0,
-    "haaretz": 25,
-    "israelhayom": 248,
-    "ynet": 401,
-    "calcalist": 36,
-    "globes": 306,
-    "jta": 22,
-    "thenational": 12,
-    "middleeasteye": 1,
-    "agbi": 55,
-    "forbesme": 47,
-    "gulfnews": 0,
-    "zawya": 0,
-    "aljazeera": 3,
-    "almonitor": 1,
-    "amwaj": 35,
-    "meed": 79,
-    "tasnim": 10242,
-    "irna": 3,
-    "sana": 3290,
-    "warontherocks": 112,
-    "intelligenceonline": 155,
-    "responsiblestatecraft": 41,
-    "foreignpolicy": 8,
-    "foreignaffairs": 23,
-    "csis": 1,
-    "fdd": 12,
-    "breakingdefense": 4,
-    "defensenews": 4,
-    "therecord": 25,
-    "cyberscoop": 19,
-    "dcd": 6,
-    "techcrunch": 4,
-    "sportico": 28,
-    "fos": 0,
-    "espn_nfl": 262,
-    "whitehouse": 557,
-    "statedept": 40,
-    "treasury": 593,
-    "sec": 2060,
-    "centcom": 3137,
-    "pmo_israel": 6182,
-    "q_principals_us": 625,
-    "q_israel_leaders": 280,
-    "q_gulf_capital": 53,
-    "q_defense_tech": 27,
-    "q_private_capital": 31,
-    "q_jewish_politics": 8,
-    "q_michigan": 39,
-    "q_kraft_nfl": 9,
-    "q_syria": 4628,
-    "q_abraham_accords": 886,
-    "newlines": 71,
-    "arabnews": 1,
-    "japantimes": 52,
-    "sfstandard": 46,
-    "thebanner": 4,
-    "telegraph": 10,
-    "africaintelligence": 34,
-    "glitz": 10234,
-    "lalettre": 10234,
-    "wired": 4,
-    "techreview": 56,
-    "nymag": 10,
-    "punchbowl": 2,
-    "airmail": 275,
+    "haaretz": 26,
+    "israelhayom": 249,
+    "ynet": 402,
+    "calcalist": 37,
+    "globes": 307,
+    "jta": 23,
+    "thenational": 13,
+    "middleeasteye": 2,
+    "agbi": 56,
+    "forbesme": 48,
+    "gulfnews": 1,
+    "zawya": 1,
+    "aljazeera": 4,
+    "almonitor": 2,
+    "amwaj": 36,
+    "meed": 80,
+    "tasnim": 10243,
+    "irna": 4,
+    "sana": 3291,
+    "warontherocks": 113,
+    "intelligenceonline": 156,
+    "responsiblestatecraft": 42,
+    "foreignpolicy": 9,
+    "foreignaffairs": 24,
+    "csis": 2,
+    "fdd": 13,
+    "breakingdefense": 5,
+    "defensenews": 5,
+    "therecord": 26,
+    "cyberscoop": 20,
+    "dcd": 7,
+    "techcrunch": 5,
+    "sportico": 29,
+    "fos": 1,
+    "espn_nfl": 263,
+    "whitehouse": 558,
+    "statedept": 41,
+    "treasury": 594,
+    "sec": 2061,
+    "centcom": 3138,
+    "pmo_israel": 6183,
+    "q_principals_us": 626,
+    "q_israel_leaders": 281,
+    "q_gulf_capital": 54,
+    "q_defense_tech": 28,
+    "q_private_capital": 32,
+    "q_jewish_politics": 9,
+    "q_michigan": 40,
+    "q_kraft_nfl": 10,
+    "q_syria": 4629,
+    "q_abraham_accords": 887,
+    "newlines": 72,
+    "arabnews": 2,
+    "japantimes": 53,
+    "sfstandard": 0,
+    "thebanner": 5,
+    "telegraph": 11,
+    "africaintelligence": 35,
+    "glitz": 10235,
+    "lalettre": 10235,
+    "wired": 5,
+    "techreview": 57,
+    "nymag": 11,
+    "punchbowl": 3,
+    "airmail": 276,
     "vanityfair": 0,
-    "thetimes": 1,
-    "cnn": 1,
-    "cbsnews": 0,
-    "maxraskin": 10234,
-    "friedman": 43,
-    "ignatius": 15,
-    "stephens": 147,
-    "rosenberg": 1879,
-    "schleifer": 92,
-    "danielmael": 10231,
-    "wapo_world": 650,
-    "theathletic": 7,
-    "texasmonthly": 325,
-    "colossus": 2286,
-    "callmeback": 155
+    "thetimes": 0,
+    "cnn": 2,
+    "cbsnews": 1,
+    "maxraskin": 10235,
+    "friedman": 44,
+    "ignatius": 16,
+    "stephens": 148,
+    "rosenberg": 1880,
+    "schleifer": 93,
+    "danielmael": 10232,
+    "wapo_world": 651,
+    "theathletic": 8,
+    "texasmonthly": 326,
+    "colossus": 2287,
+    "callmeback": 156
   },
   "consecutive_parse_fail": {
     "wsj": 0,
