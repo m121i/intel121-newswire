@@ -1,23 +1,23 @@
 {
-  "started_at": "2026-10-30T16:41:06+00:00",
-  "finished_at": "2026-10-30T16:41:48+00:00",
-  "duration_seconds": 41.9,
+  "started_at": "2026-10-30T16:46:07+00:00",
+  "finished_at": "2026-10-30T16:46:46+00:00",
+  "duration_seconds": 39.8,
   "dispatch_interval_seconds": 900,
   "items": {
     "fetched": 18,
     "fresh": 18,
     "relevant": 9,
-    "unseen": 1,
+    "unseen": 2,
     "unique": 1,
     "posted": 1
   },
   "posted": 1,
   "delivered": true,
-  "last_posted_at": "2026-10-30T16:41:48+00:00",
+  "last_posted_at": "2026-10-30T16:46:46+00:00",
   "sources": {
     "wsj": {
       "status": "ok",
-      "fetched": 0,
+      "fetched": 2,
       "in_window": 100
     },
     "bloomberg": {
@@ -27,7 +27,7 @@
     },
     "nyt_world": {
       "status": "ok",
-      "fetched": 2,
+      "fetched": 1,
       "in_window": 56
     },
     "nyt_politics": {
@@ -81,8 +81,9 @@
       "in_window": 10
     },
     "thehill": {
-      "status": "error",
-      "detail": "HTTPError: HTTP 503 from https://thehill.com/feed/"
+      "status": "ok",
+      "fetched": 1,
+      "in_window": 100
     },
     "theatlantic": {
       "status": "ok",
@@ -116,12 +117,12 @@
     "puck": {
       "status": "ok",
       "fetched": 0,
-      "in_window": 60
+      "in_window": 69
     },
     "economist": {
       "status": "ok",
       "fetched": 0,
-      "in_window": 31
+      "in_window": 30
     },
     "timesofisrael": {
       "status": "ok",
@@ -135,8 +136,8 @@
     },
     "haaretz": {
       "status": "ok",
-      "fetched": 0,
-      "in_window": 69
+      "fetched": 1,
+      "in_window": 71
     },
     "israelhayom": {
       "status": "ok",
@@ -165,7 +166,7 @@
     },
     "thenational": {
       "status": "ok",
-      "fetched": 1,
+      "fetched": 0,
       "in_window": 100
     },
     "middleeasteye": {
@@ -181,17 +182,17 @@
     "forbesme": {
       "status": "ok",
       "fetched": 0,
-      "in_window": 36
+      "in_window": 39
     },
     "gulfnews": {
       "status": "ok",
       "fetched": 0,
-      "in_window": 100
+      "in_window": 84
     },
     "zawya": {
       "status": "ok",
       "fetched": 0,
-      "in_window": 90
+      "in_window": 86
     },
     "aljazeera": {
       "status": "ok",
@@ -201,7 +202,7 @@
     "almonitor": {
       "status": "ok",
       "fetched": 0,
-      "in_window": 61
+      "in_window": 59
     },
     "amwaj": {
       "status": "ok",
@@ -220,7 +221,7 @@
     },
     "irna": {
       "status": "ok",
-      "fetched": 1,
+      "fetched": 0,
       "in_window": 30
     },
     "sana": {
@@ -251,7 +252,7 @@
     "foreignaffairs": {
       "status": "ok",
       "fetched": 0,
-      "in_window": 4
+      "in_window": 3
     },
     "csis": {
       "status": "ok",
@@ -260,12 +261,12 @@
     },
     "fdd": {
       "status": "ok",
-      "fetched": 1,
-      "in_window": 17
+      "fetched": 3,
+      "in_window": 20
     },
     "breakingdefense": {
       "status": "ok",
-      "fetched": 0,
+      "fetched": 1,
       "in_window": 15
     },
     "defensenews": {
@@ -294,8 +295,9 @@
       "in_window": 20
     },
     "sportico": {
-      "status": "error",
-      "detail": "ConnectionError: HTTPSConnectionPool(host='www.sportico.com', port=443): Max retries exceeded with url: /feed/ (Caused by NewConnectionError(\"HTTPSConnection(host='www.sportico.com', port=443): Failed to establish a new connection: [Errno 101] Network is unreachable\"))"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 10
     },
     "fos": {
       "status": "ok",
@@ -409,8 +411,8 @@
     },
     "thebanner": {
       "status": "ok",
-      "fetched": 0,
-      "in_window": 44
+      "fetched": 1,
+      "in_window": 45
     },
     "telegraph": {
       "status": "ok",
@@ -438,13 +440,14 @@
       "in_window": 50
     },
     "techreview": {
-      "status": "error",
-      "detail": "ConnectionError: HTTPSConnectionPool(host='www.technologyreview.com', port=443): Max retries exceeded with url: /feed/ (Caused by NewConnectionError(\"HTTPSConnection(host='www.technologyreview.com', port=443): Failed to establish a new connection: [Errno 111] Connection refused\"))"
+      "status": "ok",
+      "fetched": 0,
+      "in_window": 10
     },
     "nymag": {
       "status": "ok",
-      "fetched": 1,
-      "in_window": 26
+      "fetched": 0,
+      "in_window": 27
     },
     "punchbowl": {
       "status": "ok",
@@ -463,7 +466,7 @@
     },
     "thetimes": {
       "status": "ok",
-      "fetched": 1,
+      "fetched": 0,
       "in_window": 100
     },
     "cnn": {
@@ -473,7 +476,7 @@
     },
     "cbsnews": {
       "status": "ok",
-      "fetched": 2,
+      "fetched": 0,
       "in_window": 30
     },
     "maxraskin": {
@@ -488,7 +491,7 @@
     },
     "ignatius": {
       "status": "ok",
-      "fetched": 1,
+      "fetched": 0,
       "in_window": 8
     },
     "stephens": {
@@ -537,111 +540,111 @@
     }
   },
   "consecutive_empty": {
-    "wsj": 4,
-    "bloomberg": 4,
+    "wsj": 0,
+    "bloomberg": 5,
     "nyt_world": 0,
-    "nyt_politics": 18,
+    "nyt_politics": 19,
     "cnbc": 0,
-    "apnews": 2,
-    "ft_world": 4,
-    "ft_mideast": 52,
-    "reuters": 3,
-    "semafor": 14,
-    "axios": 18,
-    "politico": 7,
-    "politico_eu": 25,
-    "thehill": 1,
-    "theatlantic": 20,
-    "theinformation": 11,
-    "thefp": 20,
-    "freebeacon": 223,
-    "wapo_politics": 4725,
-    "foxnews_politics": 1,
-    "puck": 18,
-    "economist": 16,
-    "timesofisrael": 2,
+    "apnews": 3,
+    "ft_world": 5,
+    "ft_mideast": 53,
+    "reuters": 4,
+    "semafor": 15,
+    "axios": 19,
+    "politico": 8,
+    "politico_eu": 26,
+    "thehill": 0,
+    "theatlantic": 21,
+    "theinformation": 12,
+    "thefp": 21,
+    "freebeacon": 224,
+    "wapo_politics": 4726,
+    "foxnews_politics": 2,
+    "puck": 19,
+    "economist": 17,
+    "timesofisrael": 3,
     "jpost": 0,
-    "haaretz": 1,
-    "israelhayom": 152,
-    "ynet": 2716,
-    "calcalist": 70,
-    "globes": 821,
-    "jta": 17,
-    "thenational": 0,
+    "haaretz": 0,
+    "israelhayom": 153,
+    "ynet": 2717,
+    "calcalist": 71,
+    "globes": 822,
+    "jta": 18,
+    "thenational": 1,
     "middleeasteye": 0,
-    "agbi": 27,
-    "forbesme": 4,
-    "gulfnews": 7,
-    "zawya": 9,
-    "aljazeera": 2,
-    "almonitor": 37,
-    "amwaj": 161,
-    "meed": 29,
-    "tasnim": 14320,
-    "irna": 0,
-    "sana": 7368,
-    "warontherocks": 272,
-    "intelligenceonline": 140,
-    "responsiblestatecraft": 151,
-    "foreignpolicy": 8,
-    "foreignaffairs": 297,
-    "csis": 8,
+    "agbi": 28,
+    "forbesme": 5,
+    "gulfnews": 8,
+    "zawya": 10,
+    "aljazeera": 3,
+    "almonitor": 38,
+    "amwaj": 162,
+    "meed": 30,
+    "tasnim": 14321,
+    "irna": 1,
+    "sana": 7369,
+    "warontherocks": 273,
+    "intelligenceonline": 141,
+    "responsiblestatecraft": 152,
+    "foreignpolicy": 9,
+    "foreignaffairs": 298,
+    "csis": 9,
     "fdd": 0,
-    "breakingdefense": 3,
-    "defensenews": 7,
-    "therecord": 44,
-    "cyberscoop": 7,
-    "dcd": 1,
-    "techcrunch": 6,
-    "sportico": 5,
-    "fos": 3,
-    "espn_nfl": 62,
-    "whitehouse": 530,
-    "statedept": 258,
-    "treasury": 609,
-    "sec": 2063,
-    "centcom": 7215,
-    "pmo_israel": 1173,
-    "q_principals_us": 85,
-    "q_israel_leaders": 9,
-    "q_gulf_capital": 54,
-    "q_defense_tech": 47,
-    "q_private_capital": 28,
-    "q_jewish_politics": 434,
-    "q_michigan": 5,
-    "q_kraft_nfl": 43,
-    "q_syria": 325,
-    "q_abraham_accords": 477,
-    "newlines": 73,
-    "arabnews": 4,
-    "japantimes": 69,
-    "sfstandard": 43,
-    "thebanner": 10,
-    "telegraph": 3,
-    "africaintelligence": 131,
-    "glitz": 14312,
-    "lalettre": 1013,
-    "wired": 7,
-    "techreview": 53,
-    "nymag": 0,
-    "punchbowl": 7,
-    "airmail": 441,
-    "vanityfair": 230,
-    "thetimes": 0,
-    "cnn": 13,
-    "cbsnews": 0,
-    "maxraskin": 880,
-    "friedman": 7,
-    "ignatius": 0,
-    "stephens": 6,
-    "rosenberg": 631,
-    "schleifer": 26,
-    "danielmael": 14309,
-    "wapo_world": 4728,
-    "theathletic": 32,
-    "texasmonthly": 67,
-    "colossus": 6364,
-    "callmeback": 568
+    "breakingdefense": 0,
+    "defensenews": 8,
+    "therecord": 45,
+    "cyberscoop": 8,
+    "dcd": 2,
+    "techcrunch": 7,
+    "sportico": 6,
+    "fos": 4,
+    "espn_nfl": 63,
+    "whitehouse": 531,
+    "statedept": 259,
+    "treasury": 610,
+    "sec": 2064,
+    "centcom": 7216,
+    "pmo_israel": 1174,
+    "q_principals_us": 86,
+    "q_israel_leaders": 10,
+    "q_gulf_capital": 55,
+    "q_defense_tech": 48,
+    "q_private_capital": 29,
+    "q_jewish_politics": 435,
+    "q_michigan": 6,
+    "q_kraft_nfl": 44,
+    "q_syria": 326,
+    "q_abraham_accords": 478,
+    "newlines": 74,
+    "arabnews": 5,
+    "japantimes": 70,
+    "sfstandard": 44,
+    "thebanner": 0,
+    "telegraph": 4,
+    "africaintelligence": 132,
+    "glitz": 14313,
+    "lalettre": 1014,
+    "wired": 8,
+    "techreview": 54,
+    "nymag": 1,
+    "punchbowl": 8,
+    "airmail": 442,
+    "vanityfair": 231,
+    "thetimes": 1,
+    "cnn": 14,
+    "cbsnews": 1,
+    "maxraskin": 881,
+    "friedman": 8,
+    "ignatius": 1,
+    "stephens": 7,
+    "rosenberg": 632,
+    "schleifer": 27,
+    "danielmael": 14310,
+    "wapo_world": 4729,
+    "theathletic": 33,
+    "texasmonthly": 68,
+    "colossus": 6365,
+    "callmeback": 569
   },
   "consecutive_parse_fail": {
     "wsj": 0,
